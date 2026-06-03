@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>SaludYa - Reservar Cita</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+    <script type="text/javascript" nonce="4efa6bcb0f0b4e178016613c449"
+        src="//local.adguard.org?ts=1780429853420&amp;type=content-script&amp;dmn=contribution.usercontent.google.com&amp;url=https%3A%2F%2Fcontribution.usercontent.google.com%2Fdownload%3Fc%3DCgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1MDY2NjdmYjhjMWIwN2M0ZDllYWFkMDdlZjFkEgsSBxCV38CK8ggYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTg2Mjk1MDI4MjI4MTI0NzI1Mw%26filename%3D%26opi%3D89354086&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script>
+    <script type="text/javascript" nonce="4efa6bcb0f0b4e178016613c449"
+        src="//local.adguard.org?ts=1780429853420&amp;name=AdGuard%20Extra&amp;type=user-script"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#ccdce7",
+                        "surface-container": "#e0f0fb",
+                        "inverse-on-surface": "#e3f3fd",
+                        "surface-tint": "#30666f",
+                        "surface-container-low": "#e7f6ff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#b6ecf6",
+                        "on-error": "#ffffff",
+                        "background": "#f4faff",
+                        "on-background": "#0e1d25",
+                        "on-primary-fixed-variant": "#134e57",
+                        "surface-container-high": "#daebf5",
+                        "inverse-primary": "#9acfda",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#303732",
+                        "primary-fixed-dim": "#9acfda",
+                        "on-surface": "#0e1d25",
+                        "primary": "#003b43",
+                        "on-surface-variant": "#40484a",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#79f3ea",
+                        "on-primary-fixed": "#001f24",
+                        "outline-variant": "#c0c8ca",
+                        "primary-container": "#1a535c",
+                        "on-primary-container": "#90c5cf",
+                        "secondary-fixed-dim": "#5dd9d0",
+                        "inverse-surface": "#23323a",
+                        "on-secondary-container": "#006f69",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#b7bfb8",
+                        "on-secondary-fixed": "#00201e",
+                        "surface-bright": "#f4faff",
+                        "surface-variant": "#d5e5ef",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#dce5dd",
+                        "on-tertiary-fixed": "#161d19",
+                        "surface": "#f4faff",
+                        "secondary": "#006a65",
+                        "tertiary-container": "#464e48",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#00504c",
+                        "secondary-fixed": "#7cf6ec",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#c0c9c1",
+                        "on-tertiary-fixed-variant": "#414943",
+                        "surface-container-highest": "#d5e5ef",
+                        "outline": "#70797a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "container-max": "1280px",
+                        "xs": "4px",
+                        "xl": "64px",
+                        "lg": "40px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h3": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h2": ["32px", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "letterSpacing": "0", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h1": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md text-body-md antialiased flex h-screen overflow-hidden">
+    <!-- JSON Component: SideNavBar (Desktop) -->
+    <aside
+        class="h-screen w-64 border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 hidden lg:flex flex-col p-4 gap-2 flex-shrink-0 z-40 relative">
+        <div class="mb-8 px-4 mt-4 flex items-center gap-3">
+            <div
+                class="w-10 h-10 rounded-full bg-teal-100 dark:bg-teal-900 flex items-center justify-center overflow-hidden">
+                <img id="sidebar-user-img" alt="User profile" class="w-full h-full object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUH5jAi7NQIsOd7jAVJYFLUWKMSlEBrBDEzEn3hOC0nwtld9Q62LZdXKd_ac2F-llzuP2oFUD4mWIaK9Eh0yy3CH4jDBc6kKgChUb9nQbT1x8Z8VMKUluancD0yS_kxQdAfAt3EgfXeOrnIAcSQYqgS6D0MTVq9yFlf216J9wrH0HgLFqHvKx8o3QLyyCosis6H9rUbMkoPNXK7uYRCvnxtr7mwI8P0eWnew5Dutrz53YXeYW7VWHbA57LmlVuPK3kYBGw0Vj_l7Pj"
+                    style="">
+            </div>
+            <div>
+                <h2 class="font-black text-teal-900 dark:text-teal-100 text-base leading-tight" style=""><a href="inicio.html" id="sidebar-user-name">Portal SaludYa</a>
+                </h2>
+                <span class="text-xs text-slate-500 dark:text-slate-400" id="sidebar-user-role" style="">Gestión de Salud</span>
+            </div>
+        </div>
+        <nav class="flex-1 flex flex-col gap-1 font-inter text-sm">            <a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg hover:translate-x-1 transition-transform duration-200 active:scale-98"
+                href="panel_administrativo.html" style="">
+                <span class="material-symbols-outlined" data-icon="dashboard" style="">dashboard</span>Tablero</a>
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg hover:translate-x-1 transition-transform duration-200 active:scale-98"
+                href="disponibilidad_citas.html" style="">
+                <span class="material-symbols-outlined" data-icon="calendar_month" style="">calendar_month</span>
+                Disponibilidad</a>
+            <!-- Active State: Bookings -->
+            <a class="flex items-center gap-3 px-4 py-3 bg-teal-50 dark:bg-teal-900/20 text-teal-800 dark:text-teal-300 font-semibold rounded-lg hover:translate-x-1 transition-transform duration-200 active:scale-98"
+                href="agendar_cita.html" style="">
+                <span class="material-symbols-outlined icon-fill" data-icon="event_note" style="">event_note</span>
+                Reservas
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg hover:translate-x-1 transition-transform duration-200 active:scale-98"
+                href="perfil_medico.html" style="">
+                <span class="material-symbols-outlined" data-icon="person" style="">person</span>Perfil</a>
+            <a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg hover:translate-x-1 transition-transform duration-200 active:scale-98"
+                href="panel_administrativo.html" style="">
+                <span class="material-symbols-outlined" data-icon="admin_panel_settings"
+                    style="">admin_panel_settings</span>
+                Admin
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 rounded-lg hover:translate-x-1 transition-transform duration-200 active:scale-98 cursor-pointer mt-auto"
+                onclick="logoutUser()" style="">
+                <span class="material-symbols-outlined text-red-600 dark:text-red-400" data-icon="logout" style="">logout</span>
+                Cerrar sesión
+            </a>
+        </nav>
+        <div class="mt-auto pt-4">
+            <button
+                class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+                style="" onclick="window.location.href='agendar_cita.html'">
+                <span class="material-symbols-outlined text-[18px]" data-icon="add" style="">add</span>
+                Nueva programación</button>
+        </div>
+    </aside>
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden relative">
+        <!-- JSON Component: TopNavBar (Mobile Fallback) -->
+        <header
+            class="fixed top-0 w-full z-50 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm lg:hidden">
+            <div
+                class="flex justify-between items-center h-16 px-6 lg:px-12 max-w-7xl mx-auto font-inter antialiased text-sm font-medium">
+                <div class="text-2xl font-bold tracking-tight text-teal-800 dark:text-teal-400" style="">
+                    <a href="inicio.html">SaludYa</a>
+                </div>
+                <nav class="hidden md:flex gap-6 h-full items-center">
+                    <a class="text-slate-600 dark:text-slate-400 hover:text-teal-700 dark:hover:text-teal-300 transition-all duration-300 h-full flex items-center active:opacity-80 transition-opacity"
+                        href="inicio.html" style="">Inicio</a>
+                    <!-- Active State fallback for mobile -->
+                    <a class="text-teal-800 dark:text-teal-400 border-b-2 border-teal-800 dark:border-teal-400 pb-1 h-full flex items-center active:opacity-80 transition-opacity"
+                        href="disponibilidad_citas.html" style="">Disponibilidad</a>
+                    <a class="text-slate-600 dark:text-slate-400 hover:text-teal-700 dark:hover:text-teal-300 transition-all duration-300 h-full flex items-center active:opacity-80 transition-opacity"
+                        href="muro_experiencias.html" style="">Testimonios</a>
+                </nav>
+                <div class="flex gap-4">
+                    <button class="text-slate-600 hover:text-teal-800 transition-colors" style="" onclick="window.location.href='login.html'">Ingresar</button>
+                    <button class="bg-primary text-on-primary px-4 py-2 rounded-full font-label-md"
+                        style="" onclick="window.location.href='registro.html'">Registrarse</button>
+                </div>
+            </div>
+        </header>
+        <!-- Canvas -->
+        <main class="flex-1 overflow-y-auto bg-background pt-20 lg:pt-0">
+            <div class="p-md lg:p-xl max-w-container-max mx-auto">
+                <!-- Page Header -->
+                <div class="mb-lg animate-fade-in-up">
+                    <h1 class="font-h1 text-h1 text-on-background mb-xs" style="">
+                        <div>Reservar cita</div>
+                    </h1>
+                    <p class="font-body-md text-body-md text-on-surface-variant" style="">
+                    <div>Seleccione una fecha y hora disponibles para su consulta.</div>
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+                    <!-- Left Column: Selection (Col span 8) -->
+                    <div class="lg:col-span-8 flex flex-col gap-md">
+                        <!-- Doctor Selection (Brief) -->
+                        <div
+                            class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex items-center gap-md animate-fade-in-up delay-100">
+                            <img id="doc-card-avatar" alt="Doctor Avatar"
+                                class="w-16 h-16 rounded-full object-cover border-2 border-surface-container-high"
+                                data-alt="Professional headshot of a female doctor in a white coat smiling softly against a light blue clinical background"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC42Cbv1YrQexDfdn-Fp9J8RGrY-dfcaioPM6_QVRgfB8F4hRe_K3BjRa6dgn9KlRBr6AYjNSdSUGIhozsL7gAaHZ94b-fwnTGQgAFXXLqP4AmiL87DraEb-ib3RRDyHMGo3xwsJAnynhDKY_dLSVa8s5e9gnGex_PEXZUbeCHaU9ge5zqRAl2KQReAqc0Z-4lv-AtohI6JK9SMso23peesJ2q3IfHje5S4cJLlJAm1fpWphkj4Ay3Nw816Duz-AqJ38Fwg1359O5Hu"
+                                style="">
+                            <div class="flex-1">
+                                <h3 id="doc-card-name" class="font-h3 text-h3 text-on-surface" style="">Dr. Maria Gonzalez</h3>
+                                <p id="doc-card-specialty" class="font-body-md text-body-md text-on-surface-variant" style="">Especialista en Cardiología</p>
+                            </div>
+                            <button
+                                class="text-primary font-label-md text-label-md px-4 py-2 rounded-lg border border-primary hover:bg-primary hover:text-on-primary transition-colors"
+                                style="" onclick="window.location.href='disponibilidad_citas.html'">Cambiar</button>
+                        </div>
+                        <!-- Calendar UI -->
+                        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md animate-fade-in-up delay-200">
+                            <div class="flex justify-between items-center mb-md">
+                                <h2 class="font-h3 text-h3 text-on-surface" style="">Octubre 2024</h2>
+                                <div class="flex gap-2">
+                                    <button
+                                        class="p-2 rounded-full hover:bg-surface-container-high text-on-surface-variant transition-colors flex items-center justify-center"
+                                        style="">
+                                        <span class="material-symbols-outlined" data-icon="chevron_left"
+                                            style="">chevron_left</span>
+                                    </button>
+                                    <button
+                                        class="p-2 rounded-full hover:bg-surface-container-high text-on-surface-variant transition-colors flex items-center justify-center"
+                                        style="">
+                                        <span class="material-symbols-outlined" data-icon="chevron_right"
+                                            style="">chevron_right</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Days Header -->
+                            <div class="grid grid-cols-7 gap-2 mb-2 text-center">
+                                <div class="font-label-sm text-label-sm text-on-surface-variant" style="">Do</div>
+                                <div class="font-label-sm text-label-sm text-on-surface-variant" style="">Lunes</div>
+                                <div class="font-label-sm text-label-sm text-on-surface-variant" style="">Martes</div>
+                                <div class="font-label-sm text-label-sm text-on-surface-variant" style="">Miercoles
+                                </div>
+                                <div class="font-label-sm text-label-sm text-on-surface-variant" style="">Jueves</div>
+                                <div class="font-label-sm text-label-sm text-on-surface-variant" style="">Viernes</div>
+                                <div class="font-label-sm text-label-sm text-on-surface-variant" style="">Sábado</div>
+                            </div>
+                            <!-- Dates Grid (Simulated) -->
+                            <div class="grid grid-cols-7 gap-2 text-center">
+                                <!-- Empty starting days -->
+                                <div class="py-2 text-outline-variant" style="">29</div>
+                                <div class="py-2 text-outline-variant" style="">30</div>
+                                <!-- Active Days -->
+                                <button
+                                    class="calendar-btn py-2 font-body-md text-body-md rounded-lg hover:bg-surface-container text-on-surface transition-colors"
+                                    data-day="1" style="">1</button>
+                                <button
+                                    class="calendar-btn py-2 font-body-md text-body-md rounded-lg hover:bg-surface-container text-on-surface transition-colors"
+                                    data-day="2" style="">2</button>
+                                <button
+                                    class="calendar-btn py-2 font-body-md text-body-md rounded-lg hover:bg-surface-container text-on-surface transition-colors"
+                                    data-day="3" style="">3</button>
+                                <!-- Selected Day -->
+                                <button id="day-4"
+                                    class="calendar-btn py-2 font-body-md text-body-md rounded-lg bg-primary text-on-primary font-bold shadow-md transform scale-105 transition-all"
+                                    data-day="4" style="">4</button>
+                                <button
+                                    class="calendar-btn py-2 font-body-md text-body-md rounded-lg hover:bg-surface-container text-on-surface transition-colors"
+                                    data-day="5" style="">5</button>
+                                <button
+                                    class="calendar-btn py-2 font-body-md text-body-md rounded-lg hover:bg-surface-container text-on-surface transition-colors"
+                                    data-day="6" style="">6</button>
+                                <button
+                                    class="calendar-btn py-2 font-body-md text-body-md rounded-lg hover:bg-surface-container text-on-surface transition-colors"
+                                    data-day="7" style="">7</button>
+                                <button
+                                    class="py-2 font-body-md text-body-md rounded-lg hover:bg-surface-container text-on-surface transition-colors"
+                                    style="">8</button>
+                                <button
+                                    class="py-2 font-body-md text-body-md rounded-lg hover:bg-surface-container text-on-surface transition-colors"
+                                    style="">9</button>
+                                <button
+                                    class="py-2 font-body-md text-body-md rounded-lg hover:bg-surface-container text-on-surface transition-colors"
+                                    style="">10</button>
+                                <button
+                                    class="py-2 font-body-md text-body-md rounded-lg hover:bg-surface-container text-on-surface transition-colors"
+                                    style="">11</button>
+                                <button
+                                    class="py-2 font-body-md text-body-md rounded-lg hover:bg-surface-container text-on-surface transition-colors"
+                                    style="">12</button>
+                                <button
+                                    class="py-2 font-body-md text-body-md rounded-lg hover:bg-surface-container text-on-surface transition-colors"
+                                    style="">13</button>
+                                <button
+                                    class="py-2 font-body-md text-body-md rounded-lg hover:bg-surface-container text-on-surface transition-colors"
+                                    style="">14</button>
+                                <!-- ... more days implied ... -->
+                            </div>
+                        </div>
+                        <!-- Time Selection UI -->
+                        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md animate-fade-in-up delay-300">
+                            <h2 class="font-h3 text-h3 text-on-surface mb-md" style=""><span
+                                    class="font-body-md text-on-surface-variant font-normal ml-2" style="">
+                                    <font color="#0e1d25"><b>Tiempo disponible para el&nbsp;</b></font>Oct 4
+                                </span></h2>
+                            <div id="time-buttons-grid" class="grid grid-cols-3 sm:grid-cols-4 gap-sm">
+                                <button
+                                    class="time-btn py-3 px-4 rounded-lg border border-outline-variant text-center font-label-md text-label-md text-on-surface hover:border-primary hover:text-primary transition-colors"
+                                    style="">
+                                    09:00 AM
+                                </button>
+                                <button
+                                    class="time-btn py-3 px-4 rounded-lg border border-outline-variant text-center font-label-md text-label-md text-on-surface hover:border-primary hover:text-primary transition-colors"
+                                    style="">
+                                    09:30 AM
+                                </button>
+                                <!-- Selected Time -->
+                                <button
+                                    class="time-btn py-3 px-4 rounded-lg border-2 border-primary bg-primary-container text-on-primary-container text-center font-label-md text-label-md font-bold shadow-sm transition-colors relative overflow-hidden"
+                                    style="">
+                                    10:00 AM
+                                </button>
+                                <button
+                                    class="time-btn py-3 px-4 rounded-lg border border-outline-variant text-center font-label-md text-label-md text-on-surface hover:border-primary hover:text-primary transition-colors"
+                                    style="">
+                                    11:00 AM
+                                </button>
+                                <button
+                                    class="time-btn py-3 px-4 rounded-lg border border-outline-variant text-center font-label-md text-label-md text-on-surface hover:border-primary hover:text-primary transition-colors"
+                                    style="">
+                                    01:30 PM
+                                </button>
+                                <button
+                                    class="py-3 px-4 rounded-lg border border-outline-variant text-center font-label-md text-label-md text-on-surface hover:border-primary hover:text-primary transition-colors disabled:opacity-50 disabled:bg-surface-variant disabled:border-transparent"
+                                    disabled="" style="">
+                                    02:00 PM
+                                </button>
+                                <button
+                                    class="time-btn py-3 px-4 rounded-lg border border-outline-variant text-center font-label-md text-label-md text-on-surface hover:border-primary hover:text-primary transition-colors"
+                                    style="">
+                                    03:00 PM
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right Column: Summary & Actions (Col span 4) -->
+                    <div class="lg:col-span-4 flex flex-col gap-md">
+                        <!-- Summary Bento Card -->
+                        <div
+                            class="bg-surface-container rounded-xl p-md shadow-sm border border-outline-variant/50 relative overflow-hidden animate-fade-in-up delay-200">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -z-0"></div>
+                            <h2 class="font-h3 text-h3 text-on-surface mb-md relative z-10" style="">
+                                <div id="resumen-card-title">Resumen de la cita</div>
+                            </h2>
+                            <div class="space-y-4 mb-xl relative z-10">
+                                <div class="flex items-start gap-3">
+                                    <span class="material-symbols-outlined text-primary mt-1" data-icon="calendar_today"
+                                        style="">calendar_today</span>
+                                    <div>
+                                        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider"
+                                            style="">Fecha</p>
+                                        <p id="summary-date" class="font-body-lg text-body-lg font-medium text-on-surface" style="">
+                                            Viernes, 4 de Octubre de 2024</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="material-symbols-outlined text-primary mt-1" data-icon="schedule"
+                                        style="">schedule</span>
+                                    <div>
+                                        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider"
+                                            style="">Hora</p>
+                                        <p id="summary-time" class="font-body-lg text-body-lg font-medium text-on-surface" style="">10:00 AM</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="material-symbols-outlined text-primary mt-1" data-icon="location_on"
+                                        style="">location_on</span>
+                                    <div>
+                                        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider"
+                                            style="">Ubicación</p>
+                                        <p class="font-body-md text-body-md text-on-surface" style="">Clínica Principal SaludYa<br>Av. Salud 123, Consultorio 400</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="confirm-appointment-btn"
+                                class="w-full bg-primary text-on-primary hover:bg-on-primary-fixed-variant py-4 rounded-xl font-label-md text-label-md shadow-md transition-all duration-300 flex items-center justify-center gap-2 relative z-10"
+                                style="">
+                                Confirmar Cita
+                                <span class="material-symbols-outlined text-[20px]" data-icon="check_circle"
+                                    style="">check_circle</span>
+                            </button>
+                        </div>
+                        <!-- Existing Appointments Management -->
+                        <div class="mt-sm animate-fade-in-up delay-300">
+                            <h3 class="font-label-md text-label-md text-on-surface-variant mb-sm uppercase tracking-wider"
+                                style="">
+                                <div>Sus próximas visitas</div>
+                            </h3>
+                            <div id="upcoming-appointments-list" class="space-y-3">
+                                <!-- Se cargará dinámicamente -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- JSON Component: Footer -->
+            <footer class="w-full border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 mt-xl">
+                <div
+                    class="py-12 px-6 lg:px-12 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="text-lg font-bold text-teal-800 dark:text-teal-400" style="">
+                        SaludYa
+                    </div>
+                    <div class="font-inter text-xs text-slate-500 dark:text-slate-400" style="">
+                        © 2024 SaludYa. Dedicado a una atención médica confiable.
+                    </div>
+                    <nav class="flex gap-4">
+                        <a class="font-inter text-xs text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-200 transition-colors duration-200"
+                            href="#" style="">Política de Privacidad</a>
+                        <a class="font-inter text-xs text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-200 transition-colors duration-200"
+                            href="#" style="">Términos de Servicio</a>
+                        <a class="font-inter text-xs text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-200 transition-colors duration-200"
+                            href="#" style="">Centro de Ayuda</a>
+                        <a class="font-inter text-xs text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-200 transition-colors duration-200"
+                            href="#" style="">Contacto</a>
+                    </nav>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Confirmation Modal Overlay -->
+    <div id="booking-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-950 rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center gap-4 animate-fade-in-up">
+            <div class="w-16 h-16 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-full flex items-center justify-center mb-2">
+                <span class="material-symbols-outlined text-[36px] font-bold">check_circle</span>
+            </div>
+            <h2 class="font-h2 text-h2 text-teal-900 dark:text-teal-400">¡Cita Reservada!</h2>
+            <p class="font-body-md text-slate-600 dark:text-slate-400">Su consulta médica ha sido confirmada en nuestro sistema.</p>
+            <div class="w-full bg-slate-50 dark:bg-slate-900 rounded-xl p-4 flex flex-col gap-3 text-left border border-slate-100 dark:border-slate-800 text-sm">
+                <div class="flex justify-between"><span class="text-slate-500">Médico:</span><span id="modal-doc" class="font-semibold text-slate-800 dark:text-slate-200">Dr. Maria Gonzalez</span></div>
+                <div class="flex justify-between"><span class="text-slate-500">Fecha:</span><span id="modal-date" class="font-semibold text-slate-800 dark:text-slate-200">Viernes, 4 de Octubre de 2024</span></div>
+                <div class="flex justify-between"><span class="text-slate-500">Hora:</span><span id="modal-time" class="font-semibold text-slate-800 dark:text-slate-200">10:00 AM</span></div>
+            </div>
+            <div class="flex gap-4 w-full mt-4">
+                <button id="modal-close-btn" class="flex-1 py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium rounded-xl transition-all">Cerrar</button>
+                <button id="modal-goto-btn" class="flex-1 py-3 bg-primary text-white font-medium rounded-xl hover:opacity-95 transition-all">Ver citas</button>
+        </div>
+    </div>
+
+    <script>
+        // Access Protection: Anyone must be logged in to view this page
+        (function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) {
+                alert("Acceso denegado: Por favor, inicie sesión para continuar.");
+                window.location.href = 'login.html';
+            }
+        })();
+
+        // Read URL query params
+        const urlParams = new URLSearchParams(window.location.search);
+        let doctorName = urlParams.get('doctor') || 'Dr. Juan Carlos Montoya';
+        let specialty = urlParams.get('specialty') || 'Cardiología';
+        
+        const now = new Date();
+        let dayParam = urlParams.get('day') || now.getDate().toString();
+        let monthParam = urlParams.get('month') || (now.getMonth() + 1).toString();
+        let yearParam = urlParams.get('year') || now.getFullYear().toString();
+        let timeParam = urlParams.get('time') || '10:00 AM';
+
+        // Update Doctor Details
+        const docCardName = document.getElementById('doc-card-name');
+        const docCardSpecialty = document.getElementById('doc-card-specialty');
+        const docCardAvatar = document.getElementById('doc-card-avatar');
+        
+        if (docCardName) docCardName.textContent = doctorName;
+        if (docCardSpecialty) docCardSpecialty.textContent = `Especialista en ${specialty}`;
+
+        // Avatars mapping based on name
+        const doctorAvatars = {
+            "Dr. Juan Carlos Montoya": "https://lh3.googleusercontent.com/aida-public/AB6AXuCMiqayh5Pz6eEuOIZcskVQIMu8Yri2MzXtMjqTPd2ttgtBvEBwwB8oQ5tmPnqvCIbPbrRb0S6UZ8BbQBxYmkTEm7kdSDq7_AShWOd4ktqt7zgIY5K-ya0z81DW8AIRg_bET17y-BgS06ZRab6wIg0DfXGT5bs20PtRzV5eAksNB6E-71ttwRWzOp8om1rsTYqCqR4XD_9dWVV0pV37jhUdvxQgPBglDKoIoXC0UFwoI4Oj8CXcAKPRV4dnf0OcKRets6ycZ4MGYK3T",
+            "Dra. Beatriz Elena Henao": "https://lh3.googleusercontent.com/aida-public/AB6AXuAUH5jAi7NQIsOd7jAVJYFLUWKMSlEBrBDEzEn3hOC0nwtld9Q62LZdXKd_ac2F-llzuP2oFUD4mWIaK9Eh0yy3CH4jDBc6kKgChUb9nQbT1x8Z8VMKUluancD0yS_kxQdAfAt3EgfXeOrnIAcSQYqgS6D0MTVq9yFlf216J9wrH0HgLFqHvKx8o3QLyyCosis6H9rUbMkoPNXK7uYRCvnxtr7mwI8P0eWnew5Dutrz53YXeYW7VWHbA57LmlVuPK3kYBGw0Vj_l7Pj",
+            "Dra. Liliana Patricia Restrepo": "https://lh3.googleusercontent.com/aida-public/AB6AXuAx7UO2N7RCe2IpvA2kmGegt7pawFhaT6wl9PqtRNWLLNN-XYyBVqUPEwU5vdjUDjp0an1bohzFB8Q1P6zL57doTdVtAh82ojoXjqyeJfMfckOgTD8xJDhs3ndP3gSaklBId3fPHfaKm5meEEu7uTrSxiMquXnBBBdDOIVYLTy1FblkqfoHxW8yNp0ETuW0JO2AYI3FXIvE3SJF6EeJ1bocwzK9xb0muUem_61PsOSz50-UgKZ5B83_CFKaqBvPJ79h5hl_Hwi4xGDs",
+            "Dr. Mateo Cardona Gómez": "https://lh3.googleusercontent.com/aida-public/AB6AXuCRcRNOvjSQVPz0qUyBBKwf58-CgrclqiD3bgPWJ_vxFHP3yyAFNy-ku3C5SXEGekR6-mxLmJxdGfAI4HBHGDG_EDy-MVqlx5GMg4h51_r0BDMkenyGMjIZWPh12yoBgdMC6RhL1J07DrHU46V3DsmMimoEf-3jivkUVTZPIdw9E2CL2NL22VummKbE5JNR7wCWObWK_VCFS66ldmA77sRcGNN1i-7Nhsa_bqqJcM8d2khDJI61QR_xlRzGmgyxuf13xGkq5MxSHIL_",
+            "Dr. Andrés Felipe Ospina": "https://lh3.googleusercontent.com/aida-public/AB6AXuCMiqayh5Pz6eEuOIZcskVQIMu8Yri2MzXtMjqTPd2ttgtBvEBwwB8oQ5tmPnqvCIbPbrRb0S6UZ8BbQBxYmkTEm7kdSDq7_AShWOd4ktqt7zgIY5K-ya0z81DW8AIRg_bET17y-BgS06ZRab6wIg0DfXGT5bs20PtRzV5eAksNB6E-71ttwRWzOp8om1rsTYqCqR4XD_9dWVV0pV37jhUdvxQgPBglDKoIoXC0UFwoI4Oj8CXcAKPRV4dnf0OcKRets6ycZ4MGYK3T",
+            "Dra. Valentina Toro Restrepo": "https://lh3.googleusercontent.com/aida-public/AB6AXuAUH5jAi7NQIsOd7jAVJYFLUWKMSlEBrBDEzEn3hOC0nwtld9Q62LZdXKd_ac2F-llzuP2oFUD4mWIaK9Eh0yy3CH4jDBc6kKgChUb9nQbT1x8Z8VMKUluancD0yS_kxQdAfAt3EgfXeOrnIAcSQYqgS6D0MTVq9yFlf216J9wrH0HgLFqHvKx8o3QLyyCosis6H9rUbMkoPNXK7uYRCvnxtr7mwI8P0eWnew5Dutrz53YXeYW7VWHbA57LmlVuPK3kYBGw0Vj_l7Pj"
+        };
+        let resolvedAvatar = doctorAvatars[doctorName] || '';
+        try {
+            const doctorsList = JSON.parse(localStorage.getItem('doctors')) || [];
+            const matchedDoc = doctorsList.find(d => d.name === doctorName || d.name.includes(doctorName.replace("Dr. ", "").replace("Dra. ", "")));
+            if (matchedDoc && matchedDoc.img) {
+                resolvedAvatar = matchedDoc.img;
+            }
+        } catch (e) {}
+
+        if (docCardAvatar && resolvedAvatar) {
+            docCardAvatar.src = resolvedAvatar;
+        }
+
+        const monthNames = [
+            "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+        ];
+
+        // Summary details update helper
+        const summaryDate = document.getElementById('summary-date');
+        const summaryTime = document.getElementById('summary-time');
+
+        function updateSummary() {
+            const mIndex = parseInt(monthParam) - 1;
+            const monthName = monthNames[mIndex] || "Octubre";
+            const dateObj = new Date(parseInt(yearParam), mIndex, parseInt(dayParam));
+            const options = { weekday: 'long' };
+            let dayOfWeek = dateObj.toLocaleDateString('es-ES', options);
+            if (dayOfWeek) {
+                dayOfWeek = dayOfWeek.charAt(0).toUpperCase() + dayOfWeek.slice(1);
+            } else {
+                dayOfWeek = "Viernes";
+            }
+
+            if (summaryDate) {
+                summaryDate.textContent = `${dayOfWeek}, ${dayParam} de ${monthName} de ${yearParam}`;
+            }
+            if (summaryTime) {
+                summaryTime.textContent = timeParam;
+            }
+            // Update time display header
+            const timeHeaderSpan = document.querySelector('h2.font-h3.text-h3 span');
+            if (timeHeaderSpan) {
+                const monthAbbr = monthName.substring(0, 3);
+                timeHeaderSpan.innerHTML = `<font color="#0e1d25"><b>Tiempo disponible para el&nbsp;</b></font>${monthAbbr} ${dayParam}`;
+            }
+        }
+
+        // Days button interaction
+        const dayButtons = document.querySelectorAll('.calendar-btn');
+        dayButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                dayButtons.forEach(b => {
+                    b.className = "calendar-btn py-2 font-body-md text-body-md rounded-lg hover:bg-surface-container text-on-surface transition-colors";
+                });
+                btn.className = "calendar-btn py-2 font-body-md text-body-md rounded-lg bg-primary text-on-primary font-bold shadow-md transform scale-105 transition-all";
+                dayParam = btn.getAttribute('data-day');
+                updateSummary();
+            });
+        });
+
+        // Time buttons interaction
+        const timeButtons = document.querySelectorAll('.time-btn');
+        timeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                timeButtons.forEach(b => {
+                    b.className = "time-btn py-3 px-4 rounded-lg border border-outline-variant text-center font-label-md text-label-md text-on-surface hover:border-primary hover:text-primary transition-colors";
+                });
+                btn.className = "time-btn py-3 px-4 rounded-lg border-2 border-primary bg-primary-container text-on-primary-container text-center font-label-md text-label-md font-bold shadow-sm transition-colors relative overflow-hidden";
+                timeParam = btn.textContent.trim();
+                updateSummary();
+            });
+        });
+
+        // Appointments state & render helpers
+        function getAppointments() {
+            let list = [];
+            try {
+                list = JSON.parse(localStorage.getItem('appointments')) || [];
+                if (!Array.isArray(list)) list = [];
+            } catch (e) {
+                list = [];
+            }
+            return list;
+        }
+
+        function renderAppointments() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser')) || { email: 'invitado@saludya.com', name: 'Paciente Invitado' };
+            let list = getAppointments();
+
+            // Seed initial data if empty
+            if (list.length === 0) {
+                list = [
+                    {
+                        id: "seed-1",
+                        patientName: currentUser.name,
+                        patientEmail: currentUser.email,
+                        doctorName: "Dr. Juan Carlos Montoya",
+                        specialty: "Cardiología",
+                        date: "Sábado, 28 de Septiembre de 2024",
+                        time: "02:30 PM",
+                        status: "confirmado",
+                        title: "Chequeo General"
+                    }
+                ];
+                localStorage.setItem('appointments', JSON.stringify(list));
+            }
+
+            const listContainer = document.getElementById('upcoming-appointments-list');
+            if (listContainer) {
+                listContainer.innerHTML = '';
+                const userApps = list.filter(app => app.patientEmail.toLowerCase() === currentUser.email.toLowerCase());
+                if (userApps.length === 0) {
+                    listContainer.innerHTML = `<p class="font-body-md text-on-surface-variant italic text-center py-2">No tienes próximas visitas programadas.</p>`;
+                    return;
+                }
+                userApps.forEach(app => {
+                    const card = document.createElement('div');
+                    card.className = "bg-surface-container-lowest border border-outline-variant rounded-lg p-sm mb-xs shadow-sm flex flex-col gap-3 animate-fade-in-up";
+                    card.innerHTML = `
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="font-label-md text-label-md text-on-surface">
+                                    <strong>${app.title}</strong>
+                                </p>
+                                <p class="font-label-sm text-label-sm text-on-surface-variant">${app.date} a las ${app.time}</p>
+                                <p class="font-label-sm text-label-sm text-teal-800 font-medium">Médico: ${app.doctorName}</p>
+                            </div>
+                            <span class="bg-secondary-container text-on-secondary-container font-label-sm text-[10px] px-2 py-1 rounded-full uppercase">${app.status}</span>
+                        </div>
+                        <div class="flex gap-2 pt-2 border-t border-outline-variant/30">
+                            <button class="flex-1 py-2 font-label-sm text-label-sm text-primary hover:bg-primary/10 rounded transition-colors" onclick="window.location.href='disponibilidad_citas.html?reschedule=${app.id}'">Reprogramar</button>
+                            <div class="w-[1px] bg-outline-variant/30"></div>
+                            <button class="flex-1 py-2 font-label-sm text-label-sm text-error hover:bg-error-container rounded transition-colors cancel-btn" data-id="${app.id}">Cancelar</button>
+                        </div>
+                    `;
+                    listContainer.appendChild(card);
+                });
+
+                // Attach delete event listeners
+                listContainer.querySelectorAll('.cancel-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const id = btn.getAttribute('data-id');
+                        cancelAppointment(id);
+                    });
+                });
+            }
+        }
+
+        function cancelAppointment(id) {
+            if (confirm('¿Está seguro de que desea cancelar esta cita?')) {
+                let list = getAppointments();
+                list = list.filter(app => app.id !== id);
+                localStorage.setItem('appointments', JSON.stringify(list));
+                renderAppointments();
+            }
+        }
+
+        // Confirmation Modal Logic
+        const confirmBtn = document.getElementById('confirm-appointment-btn');
+        const modal = document.getElementById('booking-modal');
+        const modalDoc = document.getElementById('modal-doc');
+        const modalDate = document.getElementById('modal-date');
+        const modalTime = document.getElementById('modal-time');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+        const modalGotoBtn = document.getElementById('modal-goto-btn');
+
+        let rescheduleId = urlParams.get('reschedule') || '';
+
+        if (rescheduleId) {
+            const resTitle = document.getElementById('resumen-card-title');
+            if (resTitle) resTitle.textContent = "Reprogramar cita";
+            if (confirmBtn) {
+                confirmBtn.innerHTML = `
+                    Confirmar Reprogramación
+                    <span class="material-symbols-outlined text-[20px]">check_circle</span>
+                `;
+            }
+            const modalTitle = document.querySelector('#booking-modal h2');
+            if (modalTitle) modalTitle.textContent = "¡Cita Reprogramada!";
+        }
+
+        if (confirmBtn && modal) {
+            confirmBtn.addEventListener('click', () => {
+                const currentUser = JSON.parse(localStorage.getItem('currentUser')) || { email: 'invitado@saludya.com', name: 'Paciente Invitado' };
+                const mIndex = parseInt(monthParam) - 1;
+                const monthName = monthNames[mIndex] || "Octubre";
+                const dateObj = new Date(parseInt(yearParam), mIndex, parseInt(dayParam));
+                const options = { weekday: 'long' };
+                let dayOfWeek = dateObj.toLocaleDateString('es-ES', options);
+                if (dayOfWeek) {
+                    dayOfWeek = dayOfWeek.charAt(0).toUpperCase() + dayOfWeek.slice(1);
+                } else {
+                    dayOfWeek = "Viernes";
+                }
+                const formattedDate = `${dayOfWeek}, ${dayParam} de ${monthName} de ${yearParam}`;
+                
+                let list = getAppointments();
+
+                if (rescheduleId) {
+                    const appIndex = list.findIndex(app => app.id === rescheduleId);
+                    if (appIndex !== -1) {
+                        list[appIndex].doctorName = doctorName;
+                        list[appIndex].specialty = specialty;
+                        list[appIndex].date = formattedDate;
+                        list[appIndex].time = timeParam;
+                        list[appIndex].title = `Consulta de ${specialty}`;
+                    }
+                } else {
+                    // Add new appointment to localStorage
+                    const newApp = {
+                        id: "app-" + Date.now(),
+                        patientName: currentUser.name,
+                        patientEmail: currentUser.email,
+                        doctorName: doctorName,
+                        specialty: specialty,
+                        date: formattedDate,
+                        time: timeParam,
+                        status: 'confirmado',
+                        title: `Consulta de ${specialty}`
+                    };
+                    list.push(newApp);
+                }
+
+                localStorage.setItem('appointments', JSON.stringify(list));
+
+                // Update modal contents
+                if (modalDoc) modalDoc.textContent = doctorName;
+                if (modalDate) modalDate.textContent = formattedDate;
+                if (modalTime) modalTime.textContent = timeParam;
+                
+                modal.classList.remove('hidden');
+                renderAppointments();
+            });
+        }
+
+        if (modalCloseBtn && modal) {
+            modalCloseBtn.addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+        }
+        if (modalGotoBtn) {
+            modalGotoBtn.addEventListener('click', () => {
+                window.location.href = 'disponibilidad_citas.html';
+            });
+        }
+
+        // Initialize state on load
+        updateSummary();
+        renderAppointments();
+
+        function logoutUser() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'login.html';
+        }
+
+        // Load user info dynamically in sidebar
+        (function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (currentUser) {
+                const sidebarImg = document.getElementById('sidebar-user-img');
+                const sidebarName = document.getElementById('sidebar-user-name');
+                const sidebarRole = document.getElementById('sidebar-user-role');
+                if (sidebarImg && currentUser.img) {
+                    sidebarImg.src = currentUser.img;
+                }
+                if (sidebarName && currentUser.name) {
+                    sidebarName.textContent = currentUser.name;
+                }
+                if (sidebarRole) {
+                    sidebarRole.textContent = currentUser.role === 'admin' ? 'Administrador' : (currentUser.role === 'doctor' ? 'Médico' : 'Paciente');
+                }
+            }
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SaludYa - Gestión de Salud</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+    <script type="text/javascript" nonce="4efa6bcb0f0b4e178016613c449"
+        src="//local.adguard.org?ts=1780429853420&amp;type=content-script&amp;dmn=contribution.usercontent.google.com&amp;url=https%3A%2F%2Fcontribution.usercontent.google.com%2Fdownload%3Fc%3DCgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2Q2ZjViZDA0NzkwMzQ1YmU5ZDVhMjMyZGY0MTQ5YWY3EgsSBxCV38CK8ggYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTg2Mjk1MDI4MjI4MTI0NzI1Mw%26filename%3D%26opi%3D89354086&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script>
+    <script type="text/javascript" nonce="4efa6bcb0f0b4e178016613c449"
+        src="//local.adguard.org?ts=1780429853420&amp;name=AdGuard%20Extra&amp;type=user-script"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#ccdce7",
+                        "surface-container": "#e0f0fb",
+                        "inverse-on-surface": "#e3f3fd",
+                        "surface-tint": "#30666f",
+                        "surface-container-low": "#e7f6ff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#b6ecf6",
+                        "on-error": "#ffffff",
+                        "background": "#f4faff",
+                        "on-background": "#0e1d25",
+                        "on-primary-fixed-variant": "#134e57",
+                        "surface-container-high": "#daebf5",
+                        "inverse-primary": "#9acfda",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#303732",
+                        "primary-fixed-dim": "#9acfda",
+                        "on-surface": "#0e1d25",
+                        "primary": "#003b43",
+                        "on-surface-variant": "#40484a",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#79f3ea",
+                        "on-primary-fixed": "#001f24",
+                        "outline-variant": "#c0c8ca",
+                        "primary-container": "#1a535c",
+                        "on-primary-container": "#90c5cf",
+                        "secondary-fixed-dim": "#5dd9d0",
+                        "inverse-surface": "#23323a",
+                        "on-secondary-container": "#006f69",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#b7bfb8",
+                        "on-secondary-fixed": "#00201e",
+                        "surface-bright": "#f4faff",
+                        "surface-variant": "#d5e5ef",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#dce5dd",
+                        "on-tertiary-fixed": "#161d19",
+                        "surface": "#f4faff",
+                        "secondary": "#006a65",
+                        "tertiary-container": "#464e48",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#00504c",
+                        "secondary-fixed": "#7cf6ec",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#c0c9c1",
+                        "on-tertiary-fixed-variant": "#414943",
+                        "surface-container-highest": "#d5e5ef",
+                        "outline": "#70797a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "container-max": "1280px",
+                        "xs": "4px",
+                        "xl": "64px",
+                        "lg": "40px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h3": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h2": ["32px", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "letterSpacing": "0", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h1": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-16">
+    <!-- TopNavBar (Web) -->
+    <nav
+        class="hidden md:flex bg-white/90 dark:bg-slate-900/90 backdrop-blur-md font-inter antialiased text-sm font-medium fixed top-0 w-full z-50 border-b border-slate-200 dark:border-slate-800 shadow-sm flex justify-between items-center h-16 px-6 lg:px-12 max-w-7xl mx-auto left-0 right-0">
+        <div class="text-2xl font-bold tracking-tight text-teal-800 dark:text-teal-400" style=""><a href="inicio.html">SaludYa</a></div>
+        <div class="flex gap-6 items-center">
+            <a class="text-teal-800 dark:text-teal-400 border-b-2 border-teal-800 dark:border-teal-400 pb-1 hover:text-teal-700 dark:hover:text-teal-300 transition-all duration-300 active:opacity-80 transition-opacity"
+                href="inicio.html" style="">Inicio</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-teal-700 dark:hover:text-teal-300 transition-all duration-300 active:opacity-80 transition-opacity"
+                href="disponibilidad_citas.html" style="">Disponibilidad</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-teal-700 dark:hover:text-teal-300 transition-all duration-300 active:opacity-80 transition-opacity"
+                href="muro_experiencias.html" style="">Testimonios</a>
+        </div>
+        <div id="nav-actions" class="flex gap-4 items-center">
+            <button
+                class="text-primary font-label-md text-label-md px-4 py-2 hover:bg-surface-variant rounded-full transition-colors"
+                style="" onclick="window.location.href='login.html'">Ingresar</button>
+            <button
+                class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2 rounded-full hover:bg-primary/90 transition-colors"
+                style="" onclick="window.location.href='registro.html'">Registrarse</button>
+        </div>
+    </nav>
+    <!-- Mobile Top Header -->
+    <header
+        class="md:hidden flex justify-between items-center h-16 px-6 fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="text-2xl font-bold tracking-tight text-teal-800" style="">SaludYa</div>
+        <button class="text-primary p-2" id="mobile-menu-btn" style="">
+            <span class="material-symbols-outlined" style="">menu</span>
+        </button>
+    </header>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div id="mobile-drawer" class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm hidden flex justify-end">
+        <div class="w-64 bg-white h-full p-6 shadow-xl flex flex-col gap-6 relative">
+            <div class="flex justify-between items-center">
+                <span class="text-xl font-bold text-teal-800">Menú</span>
+                <button id="close-drawer-btn" class="text-primary p-2">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="flex flex-col gap-4">
+                <a class="text-lg font-medium text-teal-800 border-b border-slate-100 pb-2" href="inicio.html">Inicio</a>
+                <a class="text-lg font-medium text-slate-600 border-b border-slate-100 pb-2 hover:text-teal-800" href="disponibilidad_citas.html">Disponibilidad</a>
+                <a class="text-lg font-medium text-slate-600 border-b border-slate-100 pb-2 hover:text-teal-800" href="muro_experiencias.html">Testimonios</a>
+                <a id="mobile-login" class="text-lg font-medium text-slate-600 border-b border-slate-100 pb-2 hover:text-teal-800" href="login.html">Ingresar</a>
+                <a id="mobile-register" class="text-lg font-medium text-slate-600 border-b border-slate-100 pb-2 hover:text-teal-800" href="registro.html">Registrarse</a>
+            </div>
+        </div>
+    </div>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="py-xl px-6 lg:px-12 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-lg">
+            <div class="lg:w-1/2 flex flex-col gap-md animate-fade-in-up">
+                <h1 class="font-h1 text-h1 text-primary" style="">
+                    <div class="" style="">Tu salud, gestionada sin complicaciones.</div>
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant" style="">Disfruta de una atención médica
+                    centrada en ti. Reserva citas, gestiona tu perfil y conecta con profesionales, todo en un lugar
+                    seguro.</p>
+                <div class="flex gap-sm mt-sm">
+                    <button
+                        class="bg-primary text-on-primary font-label-md text-label-md px-8 py-3 rounded-full hover:bg-primary/90 transition-colors shadow-sm hover:shadow-md h-[48px] flex items-center justify-center"
+                        style="" onclick="window.location.href='registro.html'">Empezar</button>
+                    <button
+                        class="border-[2px] border-primary text-primary font-label-md text-label-md px-8 py-3 rounded-full hover:bg-primary/5 transition-colors h-[48px] flex items-center justify-center"
+                        style="" onclick="window.location.href='muro_experiencias.html'">Leer más</button>
+                </div>
+            </div>
+            <div class="lg:w-1/2 relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-lg bg-surface-variant animate-fade-in-up delay-100">
+                <img alt="Hero image" class="w-full h-full object-cover"
+                    data-alt="Professional portrait of a friendly and trustworthy doctor smiling in a clean medical clinic."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxuN1QIcySeTFIv-fsh6mixSS875eWnhYUYcowSpUhFH7As_evwgGoSMb6RekM-OJa_UwD2l5JcFg7kUUiK7z9e8RU90XnnS64kL7nTqqgXCdiSsD6SuZRvEEaRvqt-knxypQG1ykjBK4OiMtLWesJ2SPgLzwhV6YNpMREGQyDAnm5M6N2EvYnNDga51MG476oN3y0oal-8qLXVbD2SS36rODnVxkcRyRCNrex2-x_MEfh99X3AF5RQ1hkidA6CNFzNtEXLF_BfdmV"
+                    style="" />
+            </div>
+        </section>
+        <!-- Features Bento Grid -->
+        <section class="py-xl px-6 lg:px-12 max-w-7xl mx-auto bg-surface-container-low">
+            <div class="text-center mb-lg animate-fade-in-up">
+                <h2 class="font-h2 text-h2 text-primary mb-sm" style="">
+                    <div class="" style="">Todo lo que necesitas</div>
+                </h2>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto" style=""></p>
+                <div class="" style="">Un conjunto completo de herramientas diseñadas para que usted tenga el control de
+                    su proceso de atención médica.</div>
+                <p class="" style=""></p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+                <!-- Card 1 -->
+                <div
+                    class="bg-surface rounded-xl p-md border border-outline-variant shadow-sm hover:shadow-md transition-shadow animate-fade-in-up delay-100">
+                    <div class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center mb-md">
+                        <span class="material-symbols-outlined text-on-primary-container"
+                            style='font-variation-settings: "FILL" 1;'>calendar_month</span>
+                    </div>
+                    <h3 class="font-h3 text-h3 text-on-surface mb-xs" style="">
+                        <div class="" style="">Programación sencilla</div>
+                    </h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant" style=""></p>
+                    <div class="" style="">Reserva y gestiona citas con tus especialistas preferidos sin esfuerzo.</div>
+                    <p class="" style=""></p>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="bg-surface rounded-xl p-md border border-outline-variant shadow-sm hover:shadow-md transition-shadow md:col-span-2 relative overflow-hidden flex flex-col justify-center animate-fade-in-up delay-200">
+                    <div
+                        class="absolute right-0 top-0 w-1/2 h-full opacity-20 bg-gradient-to-l from-primary to-transparent">
+                    </div>
+                    <div class="relative z-10 w-full md:w-2/3">
+                        <div
+                            class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center mb-md">
+                            <span class="material-symbols-outlined text-on-secondary-container"
+                                style='font-variation-settings: "FILL" 1;'>health_and_safety</span>
+                        </div>
+                        <h3 class="font-h3 text-h3 text-on-surface mb-xs" style="">
+                            <div class="" style="">Registros seguros</div>
+                        </h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant" style=""></p>
+                        <div class="" style="">Acceda a su historial médico de forma segura en cualquier momento y
+                            lugar. Sus datos están protegidos con un cifrado líder en el sector.</div>
+                        <p class="" style=""></p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="bg-surface rounded-xl p-md border border-outline-variant shadow-sm hover:shadow-md transition-shadow md:col-span-2 relative overflow-hidden flex flex-col justify-center animate-fade-in-up delay-300">
+                    <div
+                        class="absolute left-0 bottom-0 w-1/2 h-full opacity-10 bg-gradient-to-r from-tertiary to-transparent">
+                    </div>
+                    <div
+                        class="relative z-10 w-full md:w-2/3 md:ml-auto text-left md:text-right flex flex-col md:items-end">
+                        <div
+                            class="w-12 h-12 bg-tertiary-container rounded-full flex items-center justify-center mb-md">
+                            <span class="material-symbols-outlined text-on-tertiary-container"
+                                style='font-variation-settings: "FILL" 1;'>forum</span>
+                        </div>
+                        <h3 class="font-h3 text-h3 text-on-surface mb-xs" style="">
+                            <div class="" style="">Comunicación directa</div>
+                        </h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant" style=""></p>
+                        <div class="" style="">Para preguntas rápidas y seguimientos sin necesidad de cita previa,
+                            comuníquese directamente con su equipo de atención médica.</div>
+                        <p class="" style=""></p>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div
+                    class="bg-surface rounded-xl p-md border border-outline-variant shadow-sm hover:shadow-md transition-shadow animate-fade-in-up delay-400">
+                    <div class="w-12 h-12 bg-error-container rounded-full flex items-center justify-center mb-md">
+                        <span class="material-symbols-outlined text-on-error-container"
+                            style='font-variation-settings: "FILL" 1;'>notifications_active</span>
+                    </div>
+                    <h3 class="font-h3 text-h3 text-on-surface mb-xs" style="">
+                        <div class="" style="">Alertas inteligentes</div>
+                    </h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant" style=""></p>
+                    <div class="" style="">Reciba recordatorios puntuales sobre medicamentos, citas próximas y
+                        revisiones médicas.</div>
+                    <p class="" style=""></p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="bg-white dark:bg-slate-900 w-full border-t border-slate-100 dark:border-slate-800 py-12 px-6 lg:px-12 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 mt-auto">
+        <div class="text-lg font-bold text-teal-800 dark:text-teal-400" style="">SaludYa</div>
+        <div class="font-inter text-xs text-slate-500 dark:text-slate-400" style="">© 2024 SaludYa. Dedicado a una atención médica confiable.</div>
+        <div class="flex gap-4">
+            <a class="font-inter text-xs text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-200 transition-colors duration-200"
+                href="#" style="">Política de Privacidad</a>
+            <a class="font-inter text-xs text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-200 transition-colors duration-200"
+                href="#" style="">Términos de Servicio</a>
+            <a class="font-inter text-xs text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-200 transition-colors duration-200"
+                href="#" style="">Centro de Ayuda</a>
+            <a class="font-inter text-xs text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-200 transition-colors duration-200"
+                href="#" style="">Contacto</a>
+        </div>
+    </footer>
+    <!-- Mobile Bottom Nav (Suppressed for Home per guidelines "Destination Rule", but implemented here to match original prompt intent if "Home" is a destination. If Home is purely transactional, this should be hidden. Assuming Home is a destination hub.) -->
+    <nav class="md:hidden fixed bottom-0 w-full bg-surface-container border-t border-outline-variant pb-safe z-50">
+        <div class="flex justify-around items-center h-16">
+            <a class="flex flex-col items-center justify-center w-full h-full text-primary" href="inicio.html" style="">
+                <div class="bg-primary-container px-4 py-1 rounded-full mb-1">
+                    <span class="material-symbols-outlined text-on-primary-container"
+                        style='font-variation-settings: "FILL" 1;'>home</span>
+                </div>
+                <span class="font-label-sm text-label-sm" style="">Inicio</span>
+            </a>
+            <a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-primary transition-colors"
+                href="agendar_cita.html" style="">
+                <div class="px-4 py-1 rounded-full mb-1">
+                    <span class="material-symbols-outlined" style="">calendar_month</span>
+                </div>
+                <span class="font-label-sm text-label-sm" style="">Citas</span>
+            </a>
+            <a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-primary transition-colors"
+                href="perfil_medico.html" style="">
+                <div class="px-4 py-1 rounded-full mb-1">
+                    <span class="material-symbols-outlined" style="">person</span>
+                </div>
+                <span class="font-label-sm text-label-sm" style="">Mi perfil</span>
+            </a>
+            <a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-primary transition-colors"
+                href="#" style="">
+                <div class="px-4 py-1 rounded-full mb-1">
+                    <span class="material-symbols-outlined" style="">help</span>
+                </div>
+                <span class="font-label-sm text-label-sm" style="">Ayuda</span>
+            </a>
+        </div>
+    </nav>
+    <div class="md:hidden h-16 pb-safe w-full bg-transparent"></div> <!-- Spacer for mobile nav -->
+    
+    <script>
+        // Drawer toggle logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeDrawerBtn = document.getElementById('close-drawer-btn');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+
+        if (mobileMenuBtn && mobileDrawer) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileDrawer.classList.remove('hidden');
+            });
+        }
+        if (closeDrawerBtn && mobileDrawer) {
+            closeDrawerBtn.addEventListener('click', () => {
+                mobileDrawer.classList.add('hidden');
+            });
+            // Close when clicking outside of drawer content
+            mobileDrawer.addEventListener('click', (e) => {
+                if (e.target === mobileDrawer) {
+                    mobileDrawer.classList.add('hidden');
+                }
+            });
+        }
+
+        // Custom Toast utility for feedback
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-20 left-1/2 -translate-x-1/2 bg-teal-800 text-white px-6 py-3 rounded-full shadow-lg text-sm font-medium z-50 transition-all duration-300 transform translate-y-10 opacity-0';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            // Trigger animation
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 10);
+
+            // Hide and remove
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Attach toast to unlinked resources
+        document.querySelectorAll('a[href="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showToast("Esta función estará disponible próximamente.");
+            });
+        });
+
+        // Dynamic header actions depending on active session
+        (function() {
+            const currentUserStr = localStorage.getItem('currentUser');
+            if (currentUserStr) {
+                try {
+                    const currentUser = JSON.parse(currentUserStr);
+                    let portalUrl = 'disponibilidad_citas.html';
+                    if (currentUser.role === 'admin') {
+                        portalUrl = 'panel_administrativo.html';
+                    } else if (currentUser.role === 'doctor') {
+                        portalUrl = 'perfil_medico.html';
+                    }
+
+                    // Desktop Nav Actions
+                    const actionsDiv = document.getElementById('nav-actions');
+                    if (actionsDiv) {
+                        actionsDiv.innerHTML = `
+                            <button class="text-primary font-label-md text-label-md px-4 py-2 hover:bg-surface-variant rounded-full transition-colors"
+                                onclick="window.location.href='${portalUrl}'">Mi Portal</button>
+                            <button class="bg-error text-white font-label-md text-label-md px-6 py-2 rounded-full hover:bg-error/90 transition-colors"
+                                onclick="logoutUser()">Cerrar sesión</button>
+                        `;
+                    }
+
+                    // Mobile Drawer Links
+                    const mobLogin = document.getElementById('mobile-login');
+                    const mobRegister = document.getElementById('mobile-register');
+                    if (mobLogin) {
+                        mobLogin.textContent = 'Mi Portal';
+                        mobLogin.setAttribute('href', portalUrl);
+                    }
+                    if (mobRegister) {
+                        mobRegister.textContent = 'Cerrar sesión';
+                        mobRegister.setAttribute('href', '#');
+                        mobRegister.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            logoutUser();
+                        });
+                    }
+                } catch(e) {}
+            }
+        })();
+
+        window.logoutUser = function() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'inicio.html';
+        };
+    </script>
+</body>
+
+</html>

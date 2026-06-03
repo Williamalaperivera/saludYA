@@ -1,0 +1,11 @@
+{
+  "name": "saludya-tests",
+  "version": "1.0.0",
+  "description": "Pruebas unitarias para SaludYa",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

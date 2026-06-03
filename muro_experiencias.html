@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>SaludYa - Muro de Experiencias</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+    <script type="text/javascript" nonce="4efa6bcb0f0b4e178016613c449"
+        src="//local.adguard.org?ts=1780429853420&amp;type=content-script&amp;dmn=contribution.usercontent.google.com&amp;url=https%3A%2F%2Fcontribution.usercontent.google.com%2Fdownload%3Fc%3DCgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1MDY2NTZkZjkxYTYwMWE2MjdiYWQyMjY4ZTcxEgsSBxCV38CK8ggYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTg2Mjk1MDI4MjI4MTI0NzI1Mw%26filename%3D%26opi%3D89354086&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script>
+    <script type="text/javascript" nonce="4efa6bcb0f0b4e178016613c449"
+        src="//local.adguard.org?ts=1780429853420&amp;name=AdGuard%20Extra&amp;type=user-script"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#ccdce7",
+                        "surface-container": "#e0f0fb",
+                        "inverse-on-surface": "#e3f3fd",
+                        "surface-tint": "#30666f",
+                        "surface-container-low": "#e7f6ff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#b6ecf6",
+                        "on-error": "#ffffff",
+                        "background": "#f4faff",
+                        "on-background": "#0e1d25",
+                        "on-primary-fixed-variant": "#134e57",
+                        "surface-container-high": "#daebf5",
+                        "inverse-primary": "#9acfda",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#303732",
+                        "primary-fixed-dim": "#9acfda",
+                        "on-surface": "#0e1d25",
+                        "primary": "#003b43",
+                        "on-surface-variant": "#40484a",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#79f3ea",
+                        "on-primary-fixed": "#001f24",
+                        "outline-variant": "#c0c8ca",
+                        "primary-container": "#1a535c",
+                        "on-primary-container": "#90c5cf",
+                        "secondary-fixed-dim": "#5dd9d0",
+                        "inverse-surface": "#23323a",
+                        "on-secondary-container": "#006f69",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#b7bfb8",
+                        "on-secondary-fixed": "#00201e",
+                        "surface-bright": "#f4faff",
+                        "surface-variant": "#d5e5ef",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#dce5dd",
+                        "on-tertiary-fixed": "#161d19",
+                        "surface": "#f4faff",
+                        "secondary": "#006a65",
+                        "tertiary-container": "#464e48",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#00504c",
+                        "secondary-fixed": "#7cf6ec",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#c0c9c1",
+                        "on-tertiary-fixed-variant": "#414943",
+                        "surface-container-highest": "#d5e5ef",
+                        "outline": "#70797a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "container-max": "1280px",
+                        "xs": "4px",
+                        "xl": "64px",
+                        "lg": "40px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h3": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h2": ["32px", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "letterSpacing": "0", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h1": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: theme('colors.surface');
+            color: theme('colors.on-surface');
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col pt-16">
+    <!-- TopNavBar Component -->
+    <nav
+        class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md fixed top-0 w-full z-50 shadow-sm border-b border-slate-200 dark:border-slate-800">
+        <div class="flex justify-between items-center h-16 px-6 lg:px-12 max-w-7xl mx-auto">
+            <!-- Brand -->
+            <a class="text-2xl font-bold tracking-tight text-teal-800 dark:text-teal-400" href="inicio.html" style="">SaludYa</a>
+            <!-- Navigation Links (Desktop) -->
+            <div class="hidden md:flex space-x-8">
+                <a class="font-inter antialiased text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-teal-700 dark:hover:text-teal-300 transition-all duration-300 active:opacity-80 transition-opacity"
+                    href="inicio.html" style="">Inicio</a>
+                <a class="font-inter antialiased text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-teal-700 dark:hover:text-teal-300 transition-all duration-300 active:opacity-80 transition-opacity"
+                    href="disponibilidad_citas.html" style="">Disponibilidad</a>
+                <!-- Active State for Testimonials -->
+                <a class="font-inter antialiased text-sm font-medium text-teal-800 dark:text-teal-400 border-b-2 border-teal-800 dark:border-teal-400 pb-1 flex-col"
+                    href="muro_experiencias.html" style="">Testimonios</a>
+            </div>
+            <!-- Actions -->
+            <div id="nav-actions" class="flex items-center space-x-4">
+                <button class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors"
+                    style="" onclick="window.location.href='login.html'">Ingresar</button>
+                <button
+                    class="font-label-md text-label-md bg-primary text-on-primary px-4 py-2 rounded-lg hover:bg-primary-container transition-colors"
+                    style="" onclick="window.location.href='registro.html'">Registrarse</button>
+            </div>
+        </div>
+    </nav>
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center w-full max-w-container-max mx-auto px-6 lg:px-12 py-xl">
+        <!-- Header Section -->
+        <div class="w-full max-w-3xl text-center mb-xl animate-fade-in-up">
+            <h1 class="font-h1 text-h1 text-on-surface mb-sm" style="">Muro de experiencias</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant" style="">
+            <div>Historias reales de nuestra comunidad. Descubre cómo pacientes y profesionales sanitarios comprometidos
+                están transformando la atención médica juntos.</div>
+            </p>
+        </div>
+        <!-- Action & Filter Bar -->
+        <div
+            class="w-full flex flex-col md:flex-row justify-between items-center gap-md mb-lg pb-md border-b border-outline-variant animate-fade-in-up delay-100">
+            <div class="flex gap-sm">
+                <button id="filter-all-btn"
+                    class="font-label-md text-label-md bg-surface-container-high text-on-surface px-4 py-2 rounded-full border border-outline-variant hover:bg-surface-container-highest transition-colors"
+                    style="">Todas las historias</button>
+                <button id="filter-patients-btn"
+                    class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-4 py-2 rounded-full transition-colors"
+                    style="">Pacientes</button>
+                <button id="filter-doctors-btn"
+                    class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-4 py-2 rounded-full transition-colors"
+                    style="">Doctores</button>
+            </div>
+            <button id="share-story-btn"
+                class="flex items-center gap-xs font-label-md text-label-md bg-secondary text-on-secondary px-6 py-3 rounded-lg shadow-sm hover:shadow-md transition-all hover:bg-secondary-container hover:text-on-secondary-container"
+                style="">
+                <span class="material-symbols-outlined text-[20px]" style="">edit</span>
+                Comparte tu historia</button>
+        </div>
+        <!-- Bento Grid Layout for Testimonials -->
+        <div id="stories-grid" class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter auto-rows-min">
+            <!-- Cargado dinámicamente con localStorage -->
+        </div>
+        <div class="mt-lg text-center">
+            <button
+                class="font-label-md text-label-md text-primary border border-primary px-6 py-2 rounded-full hover:bg-surface-container-low transition-colors"
+                style="">Cargar más historias</button>
+        </div>
+    </main>
+    <!-- Footer Component -->
+    <footer class="bg-white dark:bg-slate-900 w-full border-t border-slate-100 dark:border-slate-800 mt-auto">
+        <div class="py-12 px-6 lg:px-12 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <!-- Brand & Copyright -->
+            <div class="flex flex-col items-center md:items-start gap-2">
+                <span class="text-lg font-bold text-teal-800 dark:text-teal-400" style="">SaludYa</span>
+                <span class="font-inter text-xs text-slate-500 dark:text-slate-400" style="">© 2024 SaludYa. Dedicado a una atención médica confiable.</span>
+            </div>
+            <!-- Links -->
+            <div class="flex flex-wrap justify-center gap-6">
+                <a class="font-inter text-xs text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-200 transition-colors duration-200"
+                    href="#" style="">Política de Privacidad</a>
+                <a class="font-inter text-xs text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-200 transition-colors duration-200"
+                    href="#" style="">Términos de Servicio</a>
+                <a class="font-inter text-xs text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-200 transition-colors duration-200"
+                    href="#" style="">Centro de Ayuda</a>
+                <a class="font-inter text-xs text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-200 transition-colors duration-200"
+                    href="#" style="">Contacto</a>
+            </div>
+        </div>
+    </footer>
+    <!-- Share Story Modal -->
+    <div id="story-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-950 rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 dark:border-slate-800 flex flex-col gap-4 animate-fade-in-up">
+            <div class="flex justify-between items-center pb-2 border-b border-slate-100 dark:border-slate-800">
+                <h2 class="font-h3 text-h3 text-teal-900 dark:text-teal-400">Comparte tu historia</h2>
+                <button id="close-story-modal" class="text-primary p-2">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <form id="story-form" class="flex flex-col gap-4">
+                <div class="flex flex-col gap-1">
+                    <label class="font-label-sm text-on-surface" for="story-name">Tu Nombre</label>
+                    <input id="story-name" class="w-full bg-slate-50 dark:bg-slate-900 border border-outline-variant rounded-lg px-4 py-2" placeholder="Ej. Ana M." required type="text">
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="font-label-sm text-on-surface" for="story-role">Perfil</label>
+                    <select id="story-role" class="w-full bg-slate-50 dark:bg-slate-900 border border-outline-variant rounded-lg px-4 py-2">
+                        <option value="patient">Paciente</option>
+                        <option value="doctor">Médico / Especialista</option>
+                    </select>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="font-label-sm text-on-surface" for="story-tag">Especialidad o Detalle</label>
+                    <input id="story-tag" class="w-full bg-slate-50 dark:bg-slate-900 border border-outline-variant rounded-lg px-4 py-2" placeholder="Ej. Pediatría, Cardiología, Paciente" required type="text">
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="font-label-sm text-on-surface" for="story-content">Tu Historia</label>
+                    <textarea id="story-content" class="w-full bg-slate-50 dark:bg-slate-900 border border-outline-variant rounded-lg px-4 py-2 h-32 animate-none" placeholder="Escribe aquí tu experiencia..." required></textarea>
+                </div>
+                <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-medium hover:opacity-95 transition-opacity">Publicar historia</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const storiesGrid = document.getElementById('stories-grid');
+
+        // Stories state management
+        function getStories() {
+            let list = [];
+            try {
+                list = JSON.parse(localStorage.getItem('stories')) || [];
+                if (!Array.isArray(list)) list = [];
+            } catch (e) {
+                list = [];
+            }
+            return list;
+        }
+
+        function renderStories(activeRole = 'all') {
+            let list = getStories();
+
+            // Seed stories if empty
+            if (list.length === 0) {
+                list = [
+                    {
+                        id: "seed-1",
+                        role: "doctor",
+                        name: "Dr. Sarah Jenkins",
+                        tag: "Cardióloga",
+                        dateStr: "Hace 2 días",
+                        content: "Unirme a SaludYa ha transformado por completo mi forma de interactuar con mis pacientes. La plataforma permite un seguimiento impecable, y ver los resultados positivos que se comparten aquí me recuerda cada día por qué elegí la medicina. El ambiente comunitario es increíblemente reconfortante.",
+                        likes: 142,
+                        commentsCount: 24,
+                        isFeatured: true,
+                        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAsZBG0VDnOiViLyH_mhAodVWMTEBR1J45Az2cteCgVMdQP0-STqXbvBX9xVfqByw_rxPZcDXAncFguUtRzuuqnTVfYPTPgn-oUT6n2DpfxdOYcZUEJjUgc-KQVQV9Hqo_fuXIsx-LKPGISmIAzNZ8w5J9iFWPErvQGE3MlNRTFlmGsjtdSLMkhtsO0vz953UKklHJBFXH-zjy8O4z9E44WiIgmOYNpvjbhimyMjD942RxgjhUGLJGtuqJ_dtQs8GpG33pnf66XGPa9",
+                        comments: []
+                    },
+                    {
+                        id: "seed-2",
+                        role: "patient",
+                        name: "Mateo R.",
+                        tag: "Paciente",
+                        dateStr: "Hace 3 días",
+                        content: '"Me costaba encontrar un especialista que realmente me escuchara. Gracias a esta plataforma, contacté con el Dr. Avery y, por fin, mi plan de tratamiento tiene sentido. Gracias por hacer que la atención médica sea accesible."',
+                        likes: 89,
+                        commentsCount: 5,
+                        img: "",
+                        comments: []
+                    },
+                    {
+                        id: "seed-3",
+                        role: "patient",
+                        name: "Elena V.",
+                        tag: "Paciente",
+                        dateStr: "Hace 4 días",
+                        content: '"La función de videoconsulta me ahorró muchísimo tiempo. No tuve que pedirme medio día libre en el trabajo solo para revisar los resultados de mis análisis. Fue rápido, claro y tranquilizador."',
+                        likes: 45,
+                        commentsCount: 2,
+                        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDybwqMxQBcsWgSR1IsjJtnxDjVDO--ULVEfU6l7niR1e44_M5I26pADqEy1PGq3Oj_QL38mk-FYA6_BNwlmU1KOdFoPvezyEp8Y2LQbT_kRC_X32zWBLVDL6dv0Bt7IPUL99QJAOLlb-rPXP9kMmLq8bqQQpxzIpvlaNokL3jzG00vfXLC6bwn-2vF0ZZnocgFGtHQtEbmYxUDdrS6-PV9Mkw6iv8fipj9ftxWzLVGjIySBnqz6XpXGLyGBMcJsFqPXrtVvVHtaZw7",
+                        comments: [
+                            { author: "Dr. Lewis", content: "¡Me alegra mucho saber que te funcionó bien, Elena! La comodidad en la atención médica es nuestra máxima prioridad.", avatarInitial: "Dr", isDoc: true },
+                            { author: "John D.", content: "Tengo que probar la función de vídeo la próxima vez. Parece muy fácil.", avatarInitial: "J", isDoc: false }
+                        ]
+                    },
+                    {
+                        id: "seed-4",
+                        role: "doctor",
+                        name: "Dr. Marcus Chen",
+                        tag: "Pediatra",
+                        dateStr: "Hace 5 días",
+                        content: '"La nueva interfaz de programación de citas ha reducido la tasa de inasistencia a nuestra clínica en un 30%. Los pacientes agradecen los recordatorios automáticos. Es beneficioso para todos."',
+                        likes: 112,
+                        commentsCount: 8,
+                        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCXB-LzZV_OzHFfA7OxHkTboTiqSUXDGlp6ys1pLVK-ayTCjBLVIqFJeQG1wl5zFmNhV0dGOBxRDn4GWmr_hOJVAo1rWa4urA4_xafqMmv_FSTTGwv17WpQyKHisLvDPr_Wttsj_zJAxpeTxT5B4kdgiq7Fkk_GhM27othR1QXnPPCWSzmJX-Ujyh3W3CBekxHEyTBpACkfEMZINuS7usUx0iAWy0vIfFCRKiHxLSY2oyntXdT5sFILO3otwzIbp7j3j0Sik1G14FjC",
+                        comments: []
+                    }
+                ];
+                localStorage.setItem('stories', JSON.stringify(list));
+            }
+
+            if (!storiesGrid) return;
+            storiesGrid.innerHTML = '';
+
+            const filteredList = list.filter(story => activeRole === 'all' || story.role === activeRole);
+
+            filteredList.forEach(story => {
+                const article = document.createElement('article');
+                article.setAttribute('data-role', story.role);
+                
+                if (story.isFeatured && activeRole === 'all') {
+                    article.className = "col-span-1 lg:col-span-2 bg-surface-container rounded-xl p-md shadow-sm border border-outline-variant flex flex-col gap-sm hover:shadow-md transition-shadow animate-fade-in-up";
+                } else {
+                    article.className = "bg-surface-container rounded-xl p-md shadow-sm border border-outline-variant flex flex-col gap-sm hover:shadow-md transition-shadow animate-fade-in-up";
+                }
+
+                let avatarMarkup = '';
+                if (story.img) {
+                    avatarMarkup = `<img class="${story.isFeatured && activeRole === 'all' ? 'w-12 h-12' : 'w-10 h-10'} rounded-full object-cover shadow-sm" src="${story.img}">`;
+                } else {
+                    const initial = story.name ? story.name.charAt(0).toUpperCase() : 'U';
+                    avatarMarkup = `<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-h3 text-h3">${initial}</div>`;
+                }
+
+                let commentsHtml = '';
+                if (story.comments && story.comments.length > 0) {
+                    commentsHtml = `
+                        <div class="bg-surface rounded-lg p-sm mt-sm flex flex-col gap-sm">
+                            ${story.comments.map(c => `
+                                <div class="flex gap-sm">
+                                    <div class="w-6 h-6 rounded-full ${c.isDoc ? 'bg-primary-container text-on-primary-container' : 'bg-surface-variant text-on-surface-variant'} flex flex-shrink-0 items-center justify-center font-label-sm text-label-sm">${c.avatarInitial}</div>
+                                    <div class="flex-1">
+                                        <p class="font-label-sm text-label-sm text-on-surface">
+                                            <b>${c.author}: </b>${c.content}
+                                        </p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+
+                article.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-sm">
+                            ${avatarMarkup}
+                            <div>
+                                <h3 class="font-label-md text-label-md text-on-surface">${story.name}</h3>
+                                <span class="inline-block mt-xs font-label-sm text-label-sm ${story.role === 'doctor' ? 'bg-primary-container text-on-primary-container' : 'bg-surface-variant text-on-surface-variant'} px-2 py-0.5 rounded-full">${story.tag}</span>
+                            </div>
+                        </div>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant">${story.dateStr}</span>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant flex-grow py-sm">
+                        ${story.content}
+                    </p>
+                    ${commentsHtml}
+                    <div class="flex items-center gap-md pt-sm border-t border-outline-variant mt-auto">
+                        <button class="flex items-center gap-xs text-on-surface-variant hover:text-error transition-colors fav-btn" data-id="${story.id}">
+                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">favorite</span>
+                            <span class="font-label-sm text-label-sm">${story.likes}</span>
+                        </button>
+                        <button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+                            <span class="font-label-sm text-label-sm">${story.commentsCount} Comentarios</span>
+                        </button>
+                    </div>
+                `;
+
+                storiesGrid.appendChild(article);
+            });
+
+            setupLikes();
+        }
+
+        function setupLikes() {
+            const favButtons = document.querySelectorAll('.fav-btn');
+            favButtons.forEach(btn => {
+                // Prevent duplicate listeners
+                if (btn.dataset.likeAttached) return;
+                btn.dataset.likeAttached = "true";
+
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const id = btn.getAttribute('data-id');
+                    let list = getStories();
+                    const story = list.find(s => s.id === id);
+                    if (!story) return;
+
+                    const favIcon = btn.querySelector('span.material-symbols-outlined');
+                    const countSpan = btn.querySelector('span.font-label-sm');
+
+                    const isLiked = btn.classList.contains('text-error');
+                    if (isLiked) {
+                        story.likes--;
+                        btn.classList.remove('text-error');
+                        btn.classList.add('text-on-surface-variant');
+                        favIcon.style.fontVariationSettings = "'FILL' 0";
+                    } else {
+                        story.likes++;
+                        btn.classList.remove('text-on-surface-variant');
+                        btn.classList.add('text-error');
+                        favIcon.style.fontVariationSettings = "'FILL' 1";
+                    }
+
+                    countSpan.textContent = story.likes;
+                    localStorage.setItem('stories', JSON.stringify(list));
+                });
+            });
+        }
+
+        // Filters Logic
+        const filterAll = document.getElementById('filter-all-btn');
+        const filterPatients = document.getElementById('filter-patients-btn');
+        const filterDoctors = document.getElementById('filter-doctors-btn');
+
+        function setFilterActive(activeBtn) {
+            [filterAll, filterPatients, filterDoctors].forEach(btn => {
+                if (btn) btn.className = "font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-4 py-2 rounded-full transition-colors";
+            });
+            if (activeBtn) activeBtn.className = "font-label-md text-label-md bg-surface-container-high text-on-surface px-4 py-2 rounded-full border border-outline-variant hover:bg-surface-container-highest transition-colors";
+        }
+
+        if (filterAll) {
+            filterAll.addEventListener('click', () => {
+                setFilterActive(filterAll);
+                renderStories('all');
+            });
+        }
+        if (filterPatients) {
+            filterPatients.addEventListener('click', () => {
+                setFilterActive(filterPatients);
+                renderStories('patient');
+            });
+        }
+        if (filterDoctors) {
+            filterDoctors.addEventListener('click', () => {
+                setFilterActive(filterDoctors);
+                renderStories('doctor');
+            });
+        }
+
+        // Modal Controls
+        const shareBtn = document.getElementById('share-story-btn');
+        const storyModal = document.getElementById('story-modal');
+        const closeStoryModal = document.getElementById('close-story-modal');
+        const storyForm = document.getElementById('story-form');
+
+        if (shareBtn && storyModal) {
+            shareBtn.addEventListener('click', () => storyModal.classList.remove('hidden'));
+        }
+        if (closeStoryModal && storyModal) {
+            closeStoryModal.addEventListener('click', () => storyModal.classList.add('hidden'));
+            storyModal.addEventListener('click', (e) => {
+                if (e.target === storyModal) storyModal.classList.add('hidden');
+            });
+        }
+
+        if (storyForm) {
+            storyForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('story-name').value;
+                const role = document.getElementById('story-role').value;
+                const tag = document.getElementById('story-tag').value;
+                const content = document.getElementById('story-content').value;
+
+                const newStory = {
+                    id: "story-" + Date.now(),
+                    role: role,
+                    name: name,
+                    tag: tag,
+                    dateStr: "Ahora mismo",
+                    content: content,
+                    likes: 0,
+                    commentsCount: 0,
+                    img: "",
+                    comments: []
+                };
+
+                let list = getStories();
+                list.unshift(newStory);
+                localStorage.setItem('stories', JSON.stringify(list));
+
+                storyModal.classList.add('hidden');
+                storyForm.reset();
+                renderStories('all');
+                setFilterActive(filterAll);
+            });
+        }
+
+        // Init
+        renderStories('all');
+
+        // Dynamic header actions depending on active session
+        (function() {
+            const currentUserStr = localStorage.getItem('currentUser');
+            if (currentUserStr) {
+                try {
+                    const currentUser = JSON.parse(currentUserStr);
+                    const actionsDiv = document.getElementById('nav-actions');
+                    if (actionsDiv) {
+                        let portalUrl = 'disponibilidad_citas.html';
+                        if (currentUser.role === 'admin') {
+                            portalUrl = 'panel_administrativo.html';
+                        } else if (currentUser.role === 'doctor') {
+                            portalUrl = 'perfil_medico.html';
+                        }
+                        actionsDiv.innerHTML = `
+                            <button class="font-label-md text-label-md text-primary hover:underline transition-colors"
+                                onclick="window.location.href='${portalUrl}'">Mi Portal</button>
+                            <button class="font-label-md text-label-md bg-error text-white px-4 py-2 rounded-lg hover:bg-error/90 transition-colors"
+                                onclick="logoutUser()">Cerrar sesión</button>
+                        `;
+                    }
+                } catch(e) {}
+            }
+        })();
+
+        function logoutUser() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'inicio.html';
+        }
+    </script>
+</body>
+
+</html>

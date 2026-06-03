@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>SaludYa - Perfil Médico</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+    <script type="text/javascript" nonce="4efa6bcb0f0b4e178016613c449"
+        src="//local.adguard.org?ts=1780429853420&amp;type=content-script&amp;dmn=contribution.usercontent.google.com&amp;url=https%3A%2F%2Fcontribution.usercontent.google.com%2Fdownload%3Fc%3DCgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1MDY2N2JlNzFhMzQwMmE5YjY0MjRjMTllMGFhEgsSBxCV38CK8ggYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTg2Mjk1MDI4MjI4MTI0NzI1Mw%26filename%3D%26opi%3D89354086&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script>
+    <script type="text/javascript" nonce="4efa6bcb0f0b4e178016613c449"
+        src="//local.adguard.org?ts=1780429853420&amp;name=AdGuard%20Extra&amp;type=user-script"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#ccdce7",
+                        "surface-container": "#e0f0fb",
+                        "inverse-on-surface": "#e3f3fd",
+                        "surface-tint": "#30666f",
+                        "surface-container-low": "#e7f6ff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#b6ecf6",
+                        "on-error": "#ffffff",
+                        "background": "#f4faff",
+                        "on-background": "#0e1d25",
+                        "on-primary-fixed-variant": "#134e57",
+                        "surface-container-high": "#daebf5",
+                        "inverse-primary": "#9acfda",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#303732",
+                        "primary-fixed-dim": "#9acfda",
+                        "on-surface": "#0e1d25",
+                        "primary": "#003b43",
+                        "on-surface-variant": "#40484a",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#79f3ea",
+                        "on-primary-fixed": "#001f24",
+                        "outline-variant": "#c0c8ca",
+                        "primary-container": "#1a535c",
+                        "on-primary-container": "#90c5cf",
+                        "secondary-fixed-dim": "#5dd9d0",
+                        "inverse-surface": "#23323a",
+                        "on-secondary-container": "#006f69",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#b7bfb8",
+                        "on-secondary-fixed": "#00201e",
+                        "surface-bright": "#f4faff",
+                        "surface-variant": "#d5e5ef",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#dce5dd",
+                        "on-tertiary-fixed": "#161d19",
+                        "surface": "#f4faff",
+                        "secondary": "#006a65",
+                        "tertiary-container": "#464e48",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#00504c",
+                        "secondary-fixed": "#7cf6ec",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#c0c9c1",
+                        "on-tertiary-fixed-variant": "#414943",
+                        "surface-container-highest": "#d5e5ef",
+                        "outline": "#70797a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "container-max": "1280px",
+                        "xs": "4px",
+                        "xl": "64px",
+                        "lg": "40px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h3": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h2": ["32px", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "letterSpacing": "0", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h1": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+    </style>
+</head>
+
+<body class="bg-background text-on-background min-h-screen flex flex-col md:flex-row">
+    <!-- SideNavBar -->
+    <nav
+        class="bg-slate-50 dark:bg-slate-950 text-teal-800 dark:text-teal-400 font-inter text-sm h-screen w-64 border-r border-slate-200 dark:border-slate-800 hidden lg:flex flex-col p-4 gap-2 flex-shrink-0 sticky top-0">
+        <div class="mb-8 px-4 mt-4 flex items-center gap-3">
+            <div
+                class="w-10 h-10 rounded-full bg-teal-100 dark:bg-teal-900 flex items-center justify-center overflow-hidden">
+                <img id="sidebar-user-img" alt="User profile" class="w-full h-full object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUH5jAi7NQIsOd7jAVJYFLUWKMSlEBrBDEzEn3hOC0nwtld9Q62LZdXKd_ac2F-llzuP2oFUD4mWIaK9Eh0yy3CH4jDBc6kKgChUb9nQbT1x8Z8VMKUluancD0yS_kxQdAfAt3EgfXeOrnIAcSQYqgS6D0MTVq9yFlf216J9wrH0HgLFqHvKx8o3QLyyCosis6H9rUbMkoPNXK7uYRCvnxtr7mwI8P0eWnew5Dutrz53YXeYW7VWHbA57LmlVuPK3kYBGw0Vj_l7Pj"
+                    style="">
+            </div>
+            <div>
+                <h2 class="font-black text-teal-900 dark:text-teal-100 text-base leading-tight" style=""><a href="inicio.html" id="sidebar-user-name">Portal SaludYa</a>
+                </h2>
+                <span class="text-xs text-slate-500 dark:text-slate-400" id="sidebar-user-role" style="">Gestión de Salud</span>
+            </div>
+        </div>
+        <a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg hover:translate-x-1 transition-transform duration-200 active:scale-98"
+            href="panel_administrativo.html" style="">
+            <span class="material-symbols-outlined"
+                style="font-variation-settings: &quot;FILL&quot; 0;">dashboard</span>
+            <span class="font-label-md text-label-md" style="">Tablero</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg hover:translate-x-1 transition-transform duration-200 active:scale-98"
+            href="disponibilidad_citas.html" style="">
+            <span class="material-symbols-outlined"
+                style="font-variation-settings: &quot;FILL&quot; 0;">calendar_month</span>
+            <span class="font-label-md text-label-md" style="">Disponibilidad</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg hover:translate-x-1 transition-transform duration-200 active:scale-98"
+            href="agendar_cita.html" style="">
+            <span class="material-symbols-outlined"
+                style="font-variation-settings: &quot;FILL&quot; 0;">event_note</span>
+            <span class="font-label-md text-label-md" style="">Reservas</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 bg-teal-50 dark:bg-teal-900/20 text-teal-800 dark:text-teal-300 font-semibold rounded-lg hover:translate-x-1 transition-transform duration-200 active:scale-98"
+            href="perfil_medico.html" style="">
+            <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">person</span>
+            <span class="font-label-md text-label-md" style="">Perfil</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg hover:translate-x-1 transition-transform duration-200 active:scale-98"
+            href="panel_administrativo.html" style="">
+            <span class="material-symbols-outlined"
+                style="font-variation-settings: &quot;FILL&quot; 0;">admin_panel_settings</span>
+            <span class="font-label-md text-label-md" style="">Admin</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 rounded-lg hover:translate-x-1 transition-transform duration-200 active:scale-98 cursor-pointer mt-auto"
+            onclick="logoutUser()" style="">
+            <span class="material-symbols-outlined text-red-600 dark:text-red-400"
+                style="font-variation-settings: &quot;FILL&quot; 0;">logout</span>
+            <span class="font-label-md text-label-md" style="">Cerrar sesión</span>
+        </a>
+        <button
+            class="w-full bg-primary text-on-primary py-3 px-4 rounded-lg font-label-md text-label-md font-semibold hover:bg-primary-container transition-colors duration-200 shadow-sm flex justify-center items-center gap-2"
+            style="" onclick="window.location.href='agendar_cita.html'">
+            <span class="material-symbols-outlined text-[18px]" style="">add</span>
+            Nueva cita</button>
+    </nav>
+    <!-- TopNavBar (Mobile) -->
+    <nav
+        class="md:hidden bg-white/90 dark:bg-slate-900/90 backdrop-blur-md text-teal-800 dark:text-teal-400 font-inter antialiased text-sm font-medium fixed top-0 w-full z-50 border-b border-slate-200 dark:border-slate-800 shadow-sm flex justify-between items-center h-16 px-6 max-w-7xl mx-auto">
+        <div class="text-2xl font-bold tracking-tight text-teal-800 dark:text-teal-400" style=""><a href="inicio.html">SaludYa</a></div>
+        <button class="text-slate-600 dark:text-slate-400 p-2" style="" onclick="alert('Funcionalidad de menú móvil (próximamente)');">
+            <span class="material-symbols-outlined text-[24px]" style="">menu</span>
+        </button>
+    </nav>
+    <!-- Main Content Canvas -->
+    <main class="flex-1 flex flex-col w-full min-h-screen pt-16 md:pt-0 overflow-y-auto bg-surface">
+        <!-- Top App Bar Content Area (Desktop) -->
+        <header
+            class="hidden md:flex items-center justify-between px-lg py-md border-b border-outline-variant bg-surface-container-lowest sticky top-0 z-40">
+            <div>
+                <h1 class="font-h2 text-h2 text-on-surface" style="">
+                    <div class="" style="">Dr. Gestión de perfiles</div>
+                </h1>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-1" style="">
+                <div>Gestiona tus datos profesionales y tu agenda.</div>
+                </p>
+            </div>
+            <div class="flex items-center gap-md">
+                <button
+                    class="p-2 rounded-full hover:bg-surface-variant text-on-surface-variant transition-colors duration-200 relative"
+                    style="">
+                    <span class="material-symbols-outlined" style="">notifications</span>
+                    <span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+                </button>
+                <div class="flex items-center gap-3">
+                    <img id="nav-profile-img" alt="Dr. Sarah Jenkins"
+                        class="w-10 h-10 rounded-full object-cover border border-outline-variant"
+                        data-alt="Professional headshot of a female doctor in her 40s wearing a white coat, smiling warmly, well-lit studio lighting"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmfvy5Fhzc2p2HncJwzmKXfjUsx-Bflr0LaxWE6o_cKEIivCCncUTBYeLo9-WdQ_oJdDLE_-siGseR1q61SnpCinnPQeoKEjDAnYXdgypt4uAz1rAzFneaGCs_Je0t6bXvKV6Ligr0fDTvCQ7O9hz-but_KGlWovz42JvQknL7_DdA_0TYMjSTrxrlrFMLvCxeMAPcrReg8Ou_h647yHBZHyXd1HllBI5B4rCzLv0SRz1ljU-fDzu9We59KkWolMcyCaUDh8jk5ZRL"
+                        style="">
+                    <div class="flex flex-col">
+                        <span id="nav-doctor-name" class="font-label-md text-label-md text-on-surface" style="">Dr. William Alape</span>
+                        <span id="nav-doctor-specialty" class="font-label-sm text-label-sm text-on-surface-variant" style="">Cardiología</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="p-lg md:p-xl max-w-container-max mx-auto w-full flex-1 flex flex-col gap-lg">
+            <!-- Bento Grid Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+                <!-- Profile Edit Card (Spans 8 cols) -->
+                <section
+                    class="lg:col-span-8 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm flex flex-col overflow-hidden animate-fade-in-up">
+                    <div
+                        class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+                        <h2 class="font-h3 text-h3 text-on-surface flex items-center gap-2" style="">
+                            <span class="material-symbols-outlined text-primary" style="">edit_document</span>Perfil
+                            profesional
+                        </h2>
+                        <button id="save-profile-btn" class="text-primary font-label-md text-label-md hover:underline flex items-center gap-1"
+                            style="">
+                            Guardar cambios</button>
+                    </div>
+                    <div class="p-md flex flex-col md:flex-row gap-lg flex-1">
+                        <!-- Avatar Section -->
+                        <div class="flex flex-col items-center gap-4 w-full md:w-1/3">
+                            <div class="relative group">
+                                <img id="profile-img" alt="Profile Picture"
+                                    class="w-32 h-32 rounded-full object-cover border-4 border-surface-container shadow-md"
+                                    data-alt="Professional headshot of a female doctor in her 40s wearing a white coat, smiling warmly, well-lit studio lighting"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzQX3f3wMBGp7xlVh9jmpoZA5BRuNkbXUXhmzdh9gj69ydhFIysGWbml6-xS5ZfHDzcQdRRbFY26CEVDD05WL_ta65rOBmi3zCnAs1QPqVuUQNKjZqt1jVRGBH9B6Luw86Ni29vv39wUieeGj8mXnXT75-YGq7PV20J1ULdXLLTOAaBCwdnkYnZjQalbyCbUxmb26Abt0-l__d-YjQ0Nb2XKVkrOgBA0gnOQ2jvEcorj8H0uSTGXhLtbBZjLmkibF49vKSQ2DLj6cV"
+                                    style="">
+                                <button id="camera-btn"
+                                    class="absolute bottom-0 right-0 bg-primary text-on-primary p-2 rounded-full shadow-lg hover:bg-primary-container transition-colors duration-200"
+                                    style="">
+                                    <span class="material-symbols-outlined text-[18px]" style="">photo_camera</span>
+                                </button>
+                                <input type="file" id="avatar-input" accept="image/*" class="hidden">
+                            </div>
+                            <div class="text-center">
+                                <p class="font-label-sm text-label-sm text-on-surface-variant" style="">Formatos permitidos:
+                                    JPG, PNG.</p>
+                                <p class="font-label-sm text-label-sm text-on-surface-variant" style="">Tamaño máximo 2MB.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Form Fields -->
+                        <div class="flex-1 flex flex-col gap-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="flex flex-col gap-1">
+                                    <label class="font-label-sm text-label-sm text-on-surface-variant"
+                                        style="">Primer&nbsp; nombre</label>
+                                    <input id="first-name"
+                                        class="w-full bg-surface-bright border-1.5 border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                                        type="text" value="Sarah" placeholder="William">
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <label class="font-label-sm text-label-sm text-on-surface-variant"
+                                        style="">Apellido</label>
+                                    <input id="last-name"
+                                        class="w-full bg-surface-bright border-1.5 border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                                        type="text" value="Jenkins" placeholder="Alape">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="flex flex-col gap-1">
+                                    <label class="font-label-sm text-label-sm text-on-surface-variant"
+                                        style="">Especialidad</label>
+                                    <select id="specialty"
+                                        class="w-full bg-surface-bright border-1.5 border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none">
+                                        <option>Cardiología</option>
+                                        <option>Pediatría</option>
+                                        <option>Neurología</option>
+                                        <option>Medicina General</option>
+                                    </select>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <label class="font-label-sm text-label-sm text-on-surface-variant" style="">Licencia
+                                        medica&nbsp;</label>
+                                    <input id="license"
+                                        class="w-full bg-surface-bright border-1.5 border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                                        type="text" value="MED-88392-CA">
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label class="font-label-sm text-label-sm text-on-surface-variant"
+                                    style="">Experiencia</label>
+                                <textarea id="experience"
+                                    class="w-full bg-surface-bright border-1.5 border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
+                                    rows="3"
+                                    placeholder="Cardiólogo certificado con más de 15 años de experiencia en el tratamiento de afecciones cardíacas complejas. Dedicado a la atención centrada en el paciente y a la cardiología preventiva.">Cardiólogo certificado con más de 15 años de experiencia en el tratamiento de afecciones cardíacas complejas. Dedicado a la atención centrada en el paciente y a la cardiología preventiva.</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Availability & Stats (Spans 4 cols) -->
+                <section class="lg:col-span-4 flex flex-col gap-gutter animate-fade-in-up delay-100">
+                    <!-- Quick Stats -->
+                    <div
+                        class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm p-md flex gap-4">
+                        <div
+                            class="flex-1 bg-surface-container-low rounded-lg p-3 text-center border border-outline-variant">
+                            <span class="block font-h2 text-h2 text-primary" style="">12</span>
+                            <span class="block font-label-sm text-label-sm text-on-surface-variant mt-1" style="">Puntos
+                                de hoy</span>
+                        </div>
+                        <div
+                            class="flex-1 bg-surface-container-low rounded-lg p-3 text-center border border-outline-variant">
+                            <span class="block font-h2 text-h2 text-secondary" style="">4.9</span>
+                            <span class="block font-label-sm text-label-sm text-on-surface-variant mt-1"
+                                style="">Calificacion</span>
+                        </div>
+                    </div>
+                    <!-- Availability Summary -->
+                    <div
+                        class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm flex-1 flex flex-col overflow-hidden">
+                        <div
+                            class="p-md border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+                            <h3 class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-2"
+                                style="">
+                                <span class="material-symbols-outlined text-secondary" style="">schedule</span>
+                                Disponibilidad
+                            </h3>
+                            <button id="edit-availability-btn" class="text-secondary hover:text-secondary-container transition-colors" style="">
+                                <span class="material-symbols-outlined text-[20px]" style="">edit</span>
+                            </button>
+                        </div>
+                        <div id="availability-list" class="p-md flex flex-col gap-3">
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="font-body-md text-body-md text-on-surface font-medium"
+                                    style="">Lunes</span>
+                                <span
+                                    class="font-body-md text-body-md text-on-surface-variant bg-surface-container px-2 py-1 rounded"
+                                    style="">09:00 - 17:00</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="font-body-md text-body-md text-on-surface font-medium"
+                                    style="">Martes</span>
+                                <span
+                                    class="font-body-md text-body-md text-on-surface-variant bg-surface-container px-2 py-1 rounded"
+                                    style="">09:00 - 17:00</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="font-body-md text-body-md text-on-surface font-medium"
+                                    style="">Miercoles</span>
+                                <span
+                                    class="font-body-md text-body-md text-on-surface-variant bg-surface-container px-2 py-1 rounded"
+                                    style="">09:00 - 13:00</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm opacity-50">
+                                <span class="font-body-md text-body-md text-on-surface font-medium"
+                                    style="">Jueves</span>
+                                <span class="font-body-md text-body-md text-on-surface-variant" style="">No disponible</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="font-body-md text-body-md text-on-surface font-medium"
+                                    style="">Viernes</span>
+                                <span
+                                    class="font-body-md text-body-md text-on-surface-variant bg-surface-container px-2 py-1 rounded"
+                                    style="">10:00 - 18:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- Upcoming Appointments (Full Width) -->
+            <section
+                class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm flex flex-col overflow-hidden mb-lg animate-fade-in-up delay-200">
+                <div
+                    class="p-md border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+                    <h2 class="font-h3 text-h3 text-on-surface flex items-center gap-2" style="">
+                        <span class="material-symbols-outlined text-primary" style="">event_upcoming</span>
+                        <div>Próximas citas hoy</div>
+                        <div><br></div>
+                    </h2>
+                    <a class="font-label-md text-label-md text-primary hover:underline" href="#" style="">Ver todo</a>
+                </div>
+                <div id="upcoming-today-list" class="divide-y divide-outline-variant relative">
+                    <!-- Cargado dinámicamente con localStorage -->
+                </div>
+            </section>
+        </div>
+        <!-- Footer -->
+        <footer
+            class="bg-white dark:bg-slate-900 text-teal-800 dark:text-teal-400 font-inter text-xs text-slate-500 dark:text-slate-400 w-full border-t border-slate-100 dark:border-slate-800 py-12 px-6 lg:px-12 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 mt-auto">
+            <div class="flex items-center gap-2">
+                <span class="text-lg font-bold text-teal-800 dark:text-teal-400" style="">SaludYa</span>
+                <span class="" style="">© 2024 SaludYa. Dedicado a una atención médica confiable.</span>
+            </div>
+            <div class="flex gap-4">
+                <a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-200 transition-colors duration-200"
+                    href="#" style="">Política de Privacidad</a>
+                <a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-200 transition-colors duration-200"
+                    href="#" style="">Términos de Servicio</a>
+                <a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-200 transition-colors duration-200"
+                    href="#" style="">Centro de Ayuda</a>
+                <a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-200 transition-colors duration-200"
+                    href="#" style="">Contacto</a>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Edit Availability Modal -->
+    <div id="availability-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-950 rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 dark:border-slate-800 flex flex-col gap-4 animate-fade-in-up">
+            <div class="flex justify-between items-center pb-2 border-b border-slate-100 dark:border-slate-800">
+                <h3 class="font-h3 text-h3 text-teal-900 dark:text-teal-400">Editar Disponibilidad</h3>
+                <button id="close-availability-modal" class="text-primary p-2">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <form id="availability-form" class="flex flex-col gap-4">
+                <div class="flex flex-col gap-1">
+                    <label class="font-label-sm text-on-surface" for="avail-day">Día de la semana</label>
+                    <select id="avail-day" class="w-full bg-slate-50 dark:bg-slate-900 border border-outline-variant rounded-lg px-4 py-2">
+                        <option value="Lunes">Lunes</option>
+                        <option value="Martes">Martes</option>
+                        <option value="Miercoles">Miércoles</option>
+                        <option value="Jueves">Jueves</option>
+                        <option value="Viernes">Viernes</option>
+                        <option value="Sábado">Sábado</option>
+                        <option value="Domingo">Domingo</option>
+                    </select>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="font-label-sm text-on-surface" for="avail-status">Estado</label>
+                    <select id="avail-status" class="w-full bg-slate-50 dark:bg-slate-900 border border-outline-variant rounded-lg px-4 py-2">
+                        <option value="active">Disponible</option>
+                        <option value="inactive">No disponible</option>
+                    </select>
+                </div>
+                <div id="time-inputs" class="grid grid-cols-2 gap-sm">
+                    <div class="flex flex-col gap-1">
+                        <label class="font-label-sm text-on-surface" for="avail-start">Hora de Inicio</label>
+                        <input id="avail-start" class="w-full bg-slate-50 dark:bg-slate-900 border border-outline-variant rounded-lg px-4 py-2 text-sm" type="time" value="09:00">
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="font-label-sm text-on-surface" for="avail-end">Hora de Fin</label>
+                        <input id="avail-end" class="w-full bg-slate-50 dark:bg-slate-900 border border-outline-variant rounded-lg px-4 py-2 text-sm" type="time" value="17:00">
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-medium hover:opacity-95 transition-opacity">Guardar Disponibilidad</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Access Protection: Anyone logged in can view this page
+        (function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) {
+                alert("Acceso denegado: Por favor, inicie sesión.");
+                window.location.href = 'login.html';
+            }
+        })();
+
+        // Dynamic layout adjusting depending on role (doctor vs patient/admin)
+        (function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (currentUser && currentUser.role !== 'doctor') {
+                // Change main card header title
+                const headerTitle = document.querySelector('h2.font-h3');
+                if (headerTitle) {
+                    headerTitle.innerHTML = `<span class="material-symbols-outlined text-primary">person</span>Perfil de Usuario`;
+                }
+
+                // Hide specialty, license, and experience containers
+                const specialtyField = document.getElementById('specialty');
+                if (specialtyField) {
+                    const gridParent = specialtyField.closest('.grid');
+                    if (gridParent) gridParent.classList.add('hidden');
+                }
+                const experienceField = document.getElementById('experience');
+                if (experienceField) {
+                    const experienceParent = experienceField.closest('.flex-col');
+                    if (experienceParent) experienceParent.classList.add('hidden');
+                }
+
+                // Hide the entire right column (availability & quick stats section)
+                const rightCol = document.querySelector('section.lg\\:col-span-4');
+                if (rightCol) {
+                    rightCol.classList.add('hidden');
+                }
+                
+                // Expand the main profile card to span all 12 columns
+                const mainCard = document.querySelector('section.lg\\:col-span-8');
+                if (mainCard) {
+                    mainCard.classList.remove('lg:col-span-8');
+                    mainCard.classList.add('lg:col-span-12');
+                }
+
+                // Hide the upcoming appointments section (belongs only to doctors)
+                const appointmentsList = document.getElementById('upcoming-today-list');
+                if (appointmentsList) {
+                    const appSection = appointmentsList.closest('section');
+                    if (appSection) appSection.classList.add('hidden');
+                }
+
+                // Adjust page header subtext and main titles
+                const pageTitle = document.querySelector('h1.font-h2');
+                if (pageTitle) {
+                    pageTitle.innerHTML = `<div>Gestión de perfil</div>`;
+                }
+                const pageSubtext = document.querySelector('header p.font-body-md');
+                if (pageSubtext) {
+                    pageSubtext.innerHTML = `<div>Gestiona tu información personal y foto de perfil.</div>`;
+                }
+
+                // Hide doctor navigation details in the top bar
+                const navDoctorSpecialty = document.getElementById('nav-doctor-specialty');
+                if (navDoctorSpecialty) {
+                    navDoctorSpecialty.textContent = currentUser.role === 'admin' ? 'Administrador' : 'Paciente';
+                }
+            }
+        })();
+
+        // Custom Toast Notification Utility
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-8 left-1/2 -translate-x-1/2 bg-teal-800 text-white px-6 py-3 rounded-full shadow-lg text-sm font-medium z-50 transition-all duration-300 transform translate-y-10 opacity-0';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Load Profile Details on Page Load
+        const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
+        const docFirstName = document.getElementById('first-name');
+        const docLastName = document.getElementById('last-name');
+        const docSpecialty = document.getElementById('specialty');
+        const docLicense = document.getElementById('license');
+        const docExperience = document.getElementById('experience');
+        const profileImg = document.getElementById('profile-img');
+        const navProfileImg = document.getElementById('nav-profile-img');
+
+        if (currentUser) {
+            const nameParts = (currentUser.name || "").split(' ');
+            if (docFirstName) docFirstName.value = nameParts[0] || '';
+            if (docLastName) docLastName.value = nameParts.slice(1).join(' ') || '';
+            if (docSpecialty && currentUser.specialty) docSpecialty.value = currentUser.specialty;
+            if (docLicense && currentUser.license) docLicense.value = currentUser.license;
+            if (docExperience && currentUser.experience) docExperience.value = currentUser.experience;
+
+            if (currentUser.img) {
+                if (profileImg) profileImg.src = currentUser.img;
+                if (navProfileImg) navProfileImg.src = currentUser.img;
+                
+                const sidebarImg = document.getElementById('sidebar-user-img');
+                if (sidebarImg) sidebarImg.src = currentUser.img;
+            }
+
+            // Update top bar name and specialty dynamically on load
+            const navDoctorName = document.getElementById('nav-doctor-name');
+            const navDoctorSpecialty = document.getElementById('nav-doctor-specialty');
+            if (navDoctorName) navDoctorName.textContent = currentUser.name || 'Dr. William Alape';
+            if (navDoctorSpecialty) navDoctorSpecialty.textContent = currentUser.specialty || 'Cardiología';
+
+            const sidebarName = document.getElementById('sidebar-user-name');
+            const sidebarRole = document.getElementById('sidebar-user-role');
+            if (sidebarName) sidebarName.textContent = currentUser.name || 'Portal SaludYa';
+            if (sidebarRole) {
+                sidebarRole.textContent = currentUser.role === 'admin' ? 'Administrador' : (currentUser.role === 'doctor' ? 'Médico' : 'Paciente');
+            }
+        }
+
+        // Avatar Image Upload Action
+        const cameraBtn = document.getElementById('camera-btn');
+        const avatarInput = document.getElementById('avatar-input');
+        if (cameraBtn && avatarInput) {
+            cameraBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                avatarInput.click();
+            });
+        }
+        if (avatarInput) {
+            avatarInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    if (file.size > 2 * 1024 * 1024) {
+                        alert("El archivo excede el tamaño máximo permitido de 2MB.");
+                        return;
+                    }
+                    const reader = new FileReader();
+                    reader.onload = function(evt) {
+                        const base64Img = evt.target.result;
+                        if (profileImg) profileImg.src = base64Img;
+                        if (navProfileImg) navProfileImg.src = base64Img;
+                        currentUser.img = base64Img;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Save Profile Action
+        const saveProfileBtn = document.getElementById('save-profile-btn');
+        if (saveProfileBtn) {
+            saveProfileBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const firstName = docFirstName ? docFirstName.value.trim() : '';
+                const lastName = docLastName ? docLastName.value.trim() : '';
+                const fullName = `${firstName} ${lastName}`.trim();
+                
+                currentUser.name = fullName;
+                if (docSpecialty) currentUser.specialty = docSpecialty.value;
+                if (docLicense) currentUser.license = docLicense.value;
+                if (docExperience) currentUser.experience = docExperience.value;
+
+                // Save to currentUser
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+                // Save to users list
+                let users = [];
+                try {
+                    users = JSON.parse(localStorage.getItem('users')) || [];
+                } catch(e) {}
+                const userIndex = users.findIndex(u => u.email === currentUser.email);
+                if (userIndex !== -1) {
+                    users[userIndex].name = fullName;
+                    users[userIndex].specialty = currentUser.specialty;
+                    users[userIndex].license = currentUser.license;
+                    users[userIndex].experience = currentUser.experience;
+                    users[userIndex].img = currentUser.img;
+                    localStorage.setItem('users', JSON.stringify(users));
+                }
+
+                // Also update doctors list if this doctor exists there
+                let doctors = [];
+                try {
+                    doctors = JSON.parse(localStorage.getItem('doctors')) || [];
+                } catch(e) {}
+                const docIndex = doctors.findIndex(d => d.name === fullName || d.name.includes(lastName));
+                if (docIndex !== -1) {
+                    doctors[docIndex].name = fullName;
+                    doctors[docIndex].status = "Disponible";
+                    doctors[docIndex].img = currentUser.img;
+                    localStorage.setItem('doctors', JSON.stringify(doctors));
+                }
+
+                // Update top bar elements dynamically on save
+                const navDoctorName = document.getElementById('nav-doctor-name');
+                const navDoctorSpecialty = document.getElementById('nav-doctor-specialty');
+                if (navDoctorName) navDoctorName.textContent = fullName;
+                if (navDoctorSpecialty) navDoctorSpecialty.textContent = currentUser.role === 'doctor' ? currentUser.specialty : (currentUser.role === 'admin' ? 'Administrador' : 'Paciente');
+
+                // Update sidebar elements dynamically on save
+                const sidebarImg = document.getElementById('sidebar-user-img');
+                const sidebarName = document.getElementById('sidebar-user-name');
+                const sidebarRole = document.getElementById('sidebar-user-role');
+                if (sidebarImg && currentUser.img) {
+                    sidebarImg.src = currentUser.img;
+                }
+                if (sidebarName) {
+                    sidebarName.textContent = fullName;
+                }
+                if (sidebarRole) {
+                    sidebarRole.textContent = currentUser.role === 'admin' ? 'Administrador' : (currentUser.role === 'doctor' ? 'Médico' : 'Paciente');
+                }
+
+                showToast("¡Perfil actualizado con éxito!");
+            });
+        }
+
+        // Edit Availability Modal Controls
+        const editAvailBtn = document.getElementById('edit-availability-btn');
+        const availModal = document.getElementById('availability-modal');
+        const closeAvailModal = document.getElementById('close-availability-modal');
+        const availForm = document.getElementById('availability-form');
+        const availStatus = document.getElementById('avail-status');
+        const timeInputs = document.getElementById('time-inputs');
+        const availabilityList = document.getElementById('availability-list');
+
+        if (editAvailBtn && availModal) {
+            editAvailBtn.addEventListener('click', () => availModal.classList.remove('hidden'));
+        }
+        if (closeAvailModal && availModal) {
+            closeAvailModal.addEventListener('click', () => availModal.classList.add('hidden'));
+            availModal.addEventListener('click', (e) => {
+                if (e.target === availModal) availModal.classList.add('hidden');
+            });
+        }
+
+        if (availStatus && timeInputs) {
+            availStatus.addEventListener('change', () => {
+                if (availStatus.value === 'inactive') {
+                    timeInputs.classList.add('hidden');
+                } else {
+                    timeInputs.classList.remove('hidden');
+                }
+            });
+        }
+
+        // Initial default hours object
+        const defaultHours = {
+            "Lunes": "09:00 - 17:00",
+            "Martes": "09:00 - 17:00",
+            "Miercoles": "09:00 - 13:00",
+            "Jueves": "No disponible",
+            "Viernes": "10:00 - 18:00"
+        };
+
+        if (availForm && availabilityList) {
+            availForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const day = document.getElementById('avail-day').value;
+                const status = availStatus.value;
+                const start = document.getElementById('avail-start').value;
+                const end = document.getElementById('avail-end').value;
+
+                let displayTime = "No disponible";
+                if (status === 'active') {
+                    displayTime = `${start} - ${end}`;
+                }
+
+                // Update defaultHours mapping
+                defaultHours[day] = displayTime;
+
+                // Re-render availability list
+                availabilityList.innerHTML = '';
+                Object.keys(defaultHours).forEach(d => {
+                    const row = document.createElement('div');
+                    const isInactive = defaultHours[d] === "No disponible";
+                    row.className = `flex justify-between items-center text-sm ${isInactive ? 'opacity-50' : ''} animate-fade-in-up`;
+                    row.innerHTML = `
+                        <span class="font-body-md text-body-md text-on-surface font-medium">${d}</span>
+                        ${isInactive 
+                            ? `<span class="font-body-md text-body-md text-on-surface-variant">${defaultHours[d]}</span>`
+                            : `<span class="font-body-md text-body-md text-on-surface-variant bg-surface-container px-2 py-1 rounded">${defaultHours[d]}</span>`
+                        }
+                    `;
+                    availabilityList.appendChild(row);
+                });
+
+                availModal.classList.add('hidden');
+                showToast(`Disponibilidad de ${day} actualizada.`);
+            });
+        }
+
+        // Appointments State & Actions Integration
+        function getAppointments() {
+            let list = [];
+            try {
+                list = JSON.parse(localStorage.getItem('appointments')) || [];
+                if (!Array.isArray(list)) list = [];
+            } catch (e) {
+                list = [];
+            }
+            return list;
+        }
+
+        function renderAppointments() {
+            let list = getAppointments();
+
+            // Seed initial doctor appointments if storage is empty
+            if (list.length === 0) {
+                list = [
+                    {
+                        id: "seed-101",
+                        patientName: "Michael Torres",
+                        patientEmail: "michael@example.com",
+                        doctorName: "Dr. Sarah Jenkins",
+                        specialty: "Cardiology",
+                        date: "Hoy",
+                        time: "10:30 AM",
+                        status: "Confirmado",
+                        title: "Chequeo de rutina - Hipertensión"
+                    },
+                    {
+                        id: "seed-102",
+                        patientName: "Elena Rodriguez",
+                        patientEmail: "elena@example.com",
+                        doctorName: "Dr. Sarah Jenkins",
+                        specialty: "Cardiology",
+                        date: "Hoy",
+                        time: "11:15 AM",
+                        status: "Esperando sala",
+                        title: "Seguimiento postoperatorio (Alta prioridad)",
+                        isHighPriority: true
+                    },
+                    {
+                        id: "seed-103",
+                        patientName: "David Chen",
+                        patientEmail: "david@example.com",
+                        doctorName: "Dr. Sarah Jenkins",
+                        specialty: "Cardiology",
+                        date: "Hoy",
+                        time: "01:00 PM",
+                        status: "Telehealth",
+                        title: "Revisión de medicamentos"
+                    }
+                ];
+                localStorage.setItem('appointments', JSON.stringify(list));
+            }
+
+            const container = document.getElementById('upcoming-today-list');
+            if (container) {
+                container.innerHTML = '';
+                if (list.length === 0) {
+                    container.innerHTML = `<p class="font-body-md text-on-surface-variant italic text-center py-6">No hay citas agendadas para hoy.</p>`;
+                    return;
+                }
+
+                list.forEach(app => {
+                    const timeParts = app.time.split(' ');
+                    const hourMin = timeParts[0] || '10:00';
+                    const period = timeParts[1] || 'AM';
+
+                    const isHighPriority = app.isHighPriority || app.title.includes('Alta prioridad') || app.title.includes('Urgente');
+                    
+                    let statusBadgeHtml = '';
+                    let actionButtonHtml = '';
+
+                    if (app.status === 'Confirmado' || app.status === 'confirmado') {
+                        statusBadgeHtml = `
+                            <span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                Confirmado
+                            </span>`;
+                    } else if (app.status === 'Esperando sala') {
+                        statusBadgeHtml = `
+                            <span class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[14px]">hourglass_empty</span>
+                                Esperando sala
+                            </span>`;
+                    } else if (app.status === 'Telehealth') {
+                        statusBadgeHtml = `
+                            <span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[14px]">videocam</span>
+                                Telehealth
+                            </span>`;
+                        actionButtonHtml = `
+                            <button onclick="alert('Iniciando sala de consulta virtual con ${app.patientName}...')" class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors shadow-sm shadow-primary/10">
+                                Ingresar llamada
+                            </button>`;
+                    } else if (app.status === 'Completado') {
+                        statusBadgeHtml = `
+                            <span class="bg-green-100 dark:bg-green-950 text-green-800 dark:text-green-200 px-3 py-1 rounded-full font-label-sm text-label-sm flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[14px]">task_alt</span>
+                                Completado
+                            </span>`;
+                    }
+
+                    const card = document.createElement('div');
+                    card.className = "p-md flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-surface-bright transition-colors duration-200 relative overflow-hidden";
+                    
+                    let priorityBar = '';
+                    if (isHighPriority) {
+                        priorityBar = `<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>`;
+                    }
+
+                    card.innerHTML = `
+                        ${priorityBar}
+                        <div class="flex items-center gap-4 ${isHighPriority ? 'pl-2' : ''}">
+                            <div class="bg-surface-variant text-on-surface-variant rounded-lg p-2 text-center min-w-[70px]">
+                                <span class="block font-label-md text-label-md">${hourMin}</span>
+                                <span class="block font-label-sm text-label-sm opacity-80">${period}</span>
+                            </div>
+                            <div>
+                                <h4 class="font-label-md text-label-md text-on-surface text-lg">${app.patientName}</h4>
+                                <p class="font-body-md text-body-md ${isHighPriority ? 'text-error font-medium' : 'text-on-surface-variant'} flex items-center gap-1 mt-1">
+                                    <span class="material-symbols-outlined text-[16px]">${isHighPriority ? 'warning' : 'monitor_heart'}</span>
+                                    ${app.title}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 sm:ml-auto">
+                            ${statusBadgeHtml}
+                            ${actionButtonHtml}
+                            <div class="relative">
+                                <button class="p-2 border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-colors more-app-btn" data-id="${app.id}">
+                                    <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                                </button>
+                                <!-- Actions menu -->
+                                <div id="app-dropdown-${app.id}" class="hidden absolute right-0 top-10 w-48 bg-white dark:bg-slate-900 border border-outline-variant rounded-lg shadow-lg z-30 py-1 font-body-md text-body-md text-on-surface text-left">
+                                    <button class="w-full text-left px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" onclick="updateAppStatus('${app.id}', 'Confirmado')">Confirmar cita</button>
+                                    <button class="w-full text-left px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" onclick="updateAppStatus('${app.id}', 'Esperando sala')">Esperando sala</button>
+                                    <button class="w-full text-left px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" onclick="updateAppStatus('${app.id}', 'Telehealth')">Telehealth</button>
+                                    <button class="w-full text-left px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" onclick="updateAppStatus('${app.id}', 'Completado')">Completado</button>
+                                    <div class="h-[1px] bg-outline-variant my-1"></div>
+                                    <button class="w-full text-left px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 text-error transition-colors font-medium" onclick="cancelApp('${app.id}')">Cancelar cita</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+
+                // Dropdown toggles
+                container.querySelectorAll('.more-app-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const id = btn.getAttribute('data-id');
+                        const dropdown = document.getElementById(`app-dropdown-${id}`);
+                        
+                        document.querySelectorAll('[id^="app-dropdown-"]').forEach(d => {
+                            if (d !== dropdown) d.classList.add('hidden');
+                        });
+
+                        if (dropdown) dropdown.classList.toggle('hidden');
+                    });
+                });
+            }
+        }
+
+        window.updateAppStatus = function(id, newStatus) {
+            let list = getAppointments();
+            const app = list.find(a => a.id === id);
+            if (app) {
+                app.status = newStatus;
+                localStorage.setItem('appointments', JSON.stringify(list));
+                renderAppointments();
+                showToast(`Estado de cita cambiado a ${newStatus}.`);
+            }
+        };
+
+        window.cancelApp = function(id) {
+            if (confirm('¿Está seguro de que desea cancelar esta cita?')) {
+                let list = getAppointments();
+                list = list.filter(a => a.id !== id);
+                localStorage.setItem('appointments', JSON.stringify(list));
+                renderAppointments();
+                showToast('La cita ha sido cancelada.');
+            }
+        };
+
+        document.addEventListener('click', () => {
+            document.querySelectorAll('[id^="app-dropdown-"]').forEach(d => d.classList.add('hidden'));
+        });
+
+        // Initialize appointments load
+        renderAppointments();
+
+        function logoutUser() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+
+</html>
