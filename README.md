@@ -117,7 +117,6 @@ Las contribuciones son bienvenidas. Por favor abre un *issue* o envía un *pull 
 
 ## 📧 Contacto
 
-Desarrollador: **William Alaperivera**
 GitHub: <https://github.com/Williamalaperivera>
 
 ---
